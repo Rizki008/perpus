@@ -22,7 +22,6 @@
 							<th>No Peminjaman</th>
 							<th>Nama</th>
 							<th>No Buku</th>
-							<th>Jumlah Buku</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Status Buku</th>
 							<th>Setting</th>
@@ -33,7 +32,6 @@
 							<th>No Peminjaman</th>
 							<th>Nama</th>
 							<th>No Buku</th>
-							<th>Jumlah Buku</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Status Buku</th>
 							<th>Setting</th>
@@ -45,13 +43,10 @@
 								<td><?= $value->id_peminjaman ?></td>
 								<td><?= $value->nama ?></td>
 								<td><?= $value->no_buku ?></td>
-								<td><?= $value->qty ?></td>
 								<td><?= $value->tgl_pengembalian ?></td>
-								<td><?php if ($value->status === 1) { ?>
-										<span class="badge badge-warning">Dipinjam</span>
-									<?php } elseif ($value->status === 2) { ?>
+								<td><?php if ($value->status === '1') { ?>
 										<span class="badge badge-success">Dikembalikan</span>
-									<?php } elseif ($value->status === 3) { ?>
+									<?php } elseif ($value->status === '2') { ?>
 										<span class="badge badge-danger">Denda</span>
 									<?php } ?>
 								</td>
