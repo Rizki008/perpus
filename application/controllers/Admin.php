@@ -12,6 +12,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		//Load Dependencies
 		$this->load->model('m_auth');
+		$this->load->model('m_master');
 	}
 
 	// // List all your items
@@ -19,6 +20,11 @@ class Admin extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Masuk Pelanggan',
+			'total_buku' => $this->m_master->total_buku(),
+			'total_pinjam' => $this->m_master->total_pinjam(),
+			'total_denda' => $this->m_master->total_denda(),
+			'total_kembali' => $this->m_master->total_kembali(),
+			'grafik_buku' => $this->m_master->grafik_buku(),
 			'isi' => 'backend/v_admin'
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);
