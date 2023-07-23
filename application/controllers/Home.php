@@ -15,6 +15,15 @@ class Home extends CI_Controller
 		);
 		$this->load->view('backend/log/v_login', $data, FALSE);
 	}
+
+	public function siswa()
+	{
+		$data = array(
+			'title' => 'Perpustakaan Web',
+			'isi' => 'siswa/v_siswa'
+		);
+		$this->load->view('siswa/v_wrapper', $data, FALSE);
+	}
 }
 
 /* End of file Home.php */
