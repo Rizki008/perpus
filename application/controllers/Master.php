@@ -12,26 +12,45 @@ class Master extends CI_Controller
 		parent::__construct();
 		//Load Dependencies
 		$this->load->model('m_master');
+		$this->load->model('m_buku');
 	}
 
 	// List all your items
 	public function peminjaman()
 	{
-		$data = array(
-			'title' => 'Data Peminjaman Buku',
-			'pinjam' => $this->m_master->pinjam(),
-			'isi' => 'backend/peminjaman/v_pinjam'
-		);
-		$this->load->view('backend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') == 1) {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'pinjam' => $this->m_master->pinjam(),
+				'isi' => 'backend/peminjaman/v_pinjam'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') == 2) {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'pinjam' => $this->m_master->pinjam(),
+				'isi' => 'siswa/peminjaman/v_pinjam'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		}
 	}
 	public function pengembalian()
 	{
-		$data = array(
-			'title' => 'Data Peminjaman Buku',
-			'kembali' => $this->m_master->kembali(),
-			'isi' => 'backend/pengembalian/v_kembali'
-		);
-		$this->load->view('backend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') == 1) {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'kembali' => $this->m_master->kembali(),
+				'isi' => 'backend/pengembalian/v_kembali'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') == 2) {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'kembali' => $this->m_master->kembali(),
+				'isi' => 'siswa/pengembalian/v_kembali'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		}
 	}
 	public function denda()
 	{
@@ -42,20 +61,109 @@ class Master extends CI_Controller
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);
 	}
+	public function saran_buku()
+	{
+		$data = array(
+			'title' => 'Data Saran Buku',
+			'saran_buku' => $this->m_master->saran_buku(),
+			'isi' => 'backend/saran/v_saran'
+		);
+		$this->load->view('backend/v_wrapper', $data, FALSE);
+	}
 
 	// Add a new item
-	public function add()
+	public function pinjam()
 	{
+		$data = array(
+			'id_peminjaman' => $this->input->post('id_peminjaman'),
+			'id_user' => $this->session->userdata('id_user'),
+			'no_buku' => $this->input->post('no_buku'),
+			'tgl_peminjaman' => date('Y-m-d'),
+			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
+			'status' => '1'
+		);
+		$this->m_master->peminjaman($data);
+
+		$status = array(
+			'status' => '1',
+		);
+		$this->m_master->update_status_buku($data['no_buku'], $status);
+		$this->session->set_flashdata('pesan', 'Peminjaman Berhasil!!!');
+		redirect('buku/buku');
+	}
+
+	public function pinjam_langsung()
+	{
+		$data = array(
+			'id_peminjaman' => $this->input->post('id_peminjaman'),
+			'id_user' => $this->input->post('id_user'),
+			'no_buku' => $this->input->post('no_buku'),
+			'nama_peminjam' => $this->input->post('nama_peminjam'),
+			'tgl_peminjaman' => date('Y-m-d'),
+			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
+			'status' => '1'
+		);
+		$this->m_master->peminjaman($data);
+
+		$status = array(
+			'status' => '1',
+		);
+		$this->m_master->update_status_buku($data['no_buku'], $status);
+		$this->session->set_flashdata('pesan', 'Peminjaman Berhasil!!!');
+		redirect('master/peminjaman');
 	}
 
 	//Update one item
-	public function update($id = NULL)
+	public function kembali($id_peminjaman)
 	{
+		$data = array(
+			'id_peminjaman' => $id_peminjaman,
+			'id_pengembalian' => $this->input->post('id_pengembalian'),
+			'tgl_pengembalian' => date('Y-m-d'),
+			'status' => '1'
+		);
+		$this->m_master->pengembalian($data);
+
+		$status = array(
+			'status' => '0',
+			'no_buku' => $this->input->post('no_buku'),
+		);
+		$this->m_master->update($status);
+
+		$status_pinjam = array(
+			'status' => '2',
+		);
+		$this->m_master->update_status_pinjam($id_peminjaman, $status_pinjam);
+
+		$denda = array(
+			'id_pengembalian' => $this->input->post('id_pengembalian'),
+			'jml_pembayaran' => $this->input->post('jml_pembayaran'),
+		);
+		$this->m_master->denda_buku($denda);
+
+		$saran = array(
+			'id_pengembalian' => $this->input->post('id_pengembalian'),
+			'saran' => '0',
+			'status_saran' => '1',
+		);
+		$this->m_master->saran($saran);
+
+		$this->m_master->update_status_buku($data['no_buku'], $status);
+		$this->session->set_flashdata('pesan', 'Pegembalian Berhasil!!!');
+		redirect('master/pengembalian');
 	}
 
 	//Delete one item
-	public function delete($id = NULL)
+	public function saran($id_pengembalian)
 	{
+		$data = array(
+			'id_pengembalian' => $id_pengembalian,
+			'saran' => $this->input->post('saran'),
+			'status_saran' => '2'
+		);
+		$this->m_master->update_saran($data);
+		$this->session->set_flashdata('pesan', 'Pegembalian Berhasil!!!');
+		redirect('master/pengembalian');
 	}
 }
 
