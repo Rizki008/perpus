@@ -100,6 +100,55 @@ class Admin extends CI_Controller
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);
 	}
+
+	public function user()
+	{
+		$data = array(
+			'title' => 'Data User Admin',
+			'user' => $this->m_auth->user(),
+			'isi' => 'backend/user/v_user'
+		);
+		$this->load->view('backend/v_wrapper', $data, FALSE);
+	}
+	public function add()
+	{
+		$data = array(
+			'nama' => $this->input->post('nama'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'no_hp' => $this->input->post('no_hp'),
+			'alamat' => $this->input->post('alamat'),
+			'level_user' => 1,
+		);
+		$this->m_auth->registrasi($data);
+		$this->session->set_flashdata('pesan', 'Tambah Data User Admin Berhasi!!!');
+		redirect('admin/user');
+	}
+
+	public function update($id_user)
+	{
+		$data = array(
+			'id_user' => $id_user,
+			'nama' => $this->input->post('nama'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+			'no_hp' => $this->input->post('no_hp'),
+			'alamat' => $this->input->post('alamat'),
+			'level_user' => 1,
+		);
+		$this->m_auth->update($data);
+		$this->session->set_flashdata('pesan', 'Update Data User Admin Berhasi!!!');
+		redirect('admin/user');
+	}
+	public function delete($id_user)
+	{
+		$data = array(
+			'id_user' => $id_user,
+		);
+		$this->m_auth->delete($data);
+		$this->session->set_flashdata('pesan', 'Delete Data User Admin Berhasi!!!');
+		redirect('admin/user');
+	}
 }
 
 /* End of file Login.php */
