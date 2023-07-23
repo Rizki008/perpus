@@ -16,4 +16,6 @@
 	<!-- THEME STYLES-->
 	<link href="<?= base_url('backend/dist') ?>/assets/css/main.min.css" rel="stylesheet" />
 	<!-- PAGE LEVEL STYLES-->
+	<script src="<?= base_url() ?>chart/dist/Chart.min.js"></script>
+	<script src="<?= base_url() ?>chart/samples/utils.js"></script>
 </head>
