@@ -111,6 +111,29 @@ class M_master extends CI_Model
 		$this->db->where('no_buku', $data['no_buku']);
 		$this->db->update('buku', $data);
 	}
+
+
+	public function total_buku()
+	{
+		return $this->db->get('buku')->num_rows();
+	}
+	public function total_pinjam()
+	{
+		return $this->db->get('peminjaman_buku')->num_rows();
+	}
+	public function total_denda()
+	{
+		return $this->db->query("SELECT SUM(jml_pembayaran) AS jml FROM denda")->result();
+	}
+	public function total_kembali()
+	{
+		return $this->db->get('pengembalian_buku')->num_rows();
+	}
+
+	public function grafik_buku()
+	{
+		return $this->db->query("SELECT COUNT(peminjaman_buku.no_buku) as jml_buku, buku.judul FROM `peminjaman_buku` LEFT JOIN buku ON buku.no_buku=peminjaman_buku.no_buku GROUP BY peminjaman_buku.no_buku")->result();
+	}
 }
 
 /* End of file M_master.php */
