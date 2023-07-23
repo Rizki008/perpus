@@ -15,6 +15,13 @@ class M_buku extends CI_Model
 		$this->db->order_by('id_buku', 'desc');
 		return $this->db->get()->result();
 	}
+	public function baca($id_buku)
+	{
+		$this->db->select('*');
+		$this->db->from('buku');
+		$this->db->where('id_buku', $id_buku);
+		return $this->db->get()->result();
+	}
 
 	// Add a new item
 	public function add($data)
