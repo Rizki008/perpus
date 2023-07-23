@@ -69,6 +69,7 @@ class Buku extends CI_Controller
 					'pengarang' => $this->input->post('pengarang'),
 					'penerbit' => $this->input->post('penerbit'),
 					'isbn' => $this->input->post('isbn'),
+					'status' => '0',
 					'sampul' => $upload_data['uploads']['file_name'],
 				);
 				$this->m_buku->add($data);
@@ -135,6 +136,7 @@ class Buku extends CI_Controller
 					'pengarang' => $this->input->post('pengarang'),
 					'penerbit' => $this->input->post('penerbit'),
 					'isbn' => $this->input->post('isbn'),
+					'status' => '0',
 					'sampul' => $upload_data['uploads']['file_name'],
 				);
 				$this->m_buku->update($data);
@@ -148,6 +150,7 @@ class Buku extends CI_Controller
 				'pengarang' => $this->input->post('pengarang'),
 				'penerbit' => $this->input->post('penerbit'),
 				'isbn' => $this->input->post('isbn'),
+				'status' => '0'
 			);
 			$this->m_buku->update($data);
 			$this->session->set_flashdata('pesan', 'Data Berhasil Diedit !!!');
@@ -177,6 +180,22 @@ class Buku extends CI_Controller
 		$this->m_buku->delete($data);
 		$this->session->set_flashdata('pesan', 'Data Berhasil Dihapus');
 		redirect('buku');
+	}
+
+	public function buku()
+	{
+		$data = array(
+			'title' => 'Data Buku',
+			'buku' => $this->m_buku->buku(),
+			'isi' => 'siswa/buku/v_buku'
+		);
+		$this->load->view('siswa/v_wrapper', $data, FALSE);
+	}
+
+	public function download($id_buku)
+	{
+		$data = $this->db->get_where('buku', ['id_buku' => $id_buku])->row();
+		force_download('assets/sampul/' . $data->sampul, NULL);
 	}
 }
 
