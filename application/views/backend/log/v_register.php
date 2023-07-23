@@ -45,7 +45,7 @@
 
 		?>
 		<form id="login-form" action="<?= base_url('admin/register') ?>" method="post">
-			<h2 class="login-title">Log in</h2>
+			<h2 class="login-title">Registrasi</h2>
 			<div class="form-group">
 				<div class="input-group-icon right">
 					<div class="input-icon"><i class="fa fa-envelope"></i></div>
@@ -73,13 +73,13 @@
 			<div class="form-group">
 				<div class="input-group-icon right">
 					<div class="input-icon"><i class="fa fa-lock font-16"></i></div>
-					<input class="form-control" type="password" name="no_hp" value="<?= set_value('no_hp') ?>" placeholder="No HP">
+					<input class="form-control" type="number" name="no_hp" value="<?= set_value('no_hp') ?>" placeholder="No HP">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-group-icon right">
 					<div class="input-icon"><i class="fa fa-lock font-16"></i></div>
-					<input class="form-control" type="password" name="alamat" value="<?= set_value('alamat') ?>" placeholder="Alamat">
+					<input class="form-control" type="text" name="alamat" value="<?= set_value('alamat') ?>" placeholder="Alamat">
 				</div>
 			</div>
 			<div class="form-group">
