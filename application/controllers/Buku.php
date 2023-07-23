@@ -170,8 +170,9 @@ class Buku extends CI_Controller
 	{
 		//hapus gambar
 		$buku = $this->m_buku->detail($id_buku);
-		if ($buku->sampul !== "") {
+		if ($buku->sampul !== "" and $buku->file !== "") {
 			unlink('./assets/sampul/' . $buku->sampul);
+			unlink('./assets/buku/' . $buku->file);
 		}
 
 		$data = array(
@@ -221,7 +222,7 @@ class Buku extends CI_Controller
 	public function download($id_buku)
 	{
 		$data = $this->db->get_where('buku', ['id_buku' => $id_buku])->row();
-		force_download('assets/sampul/' . $data->sampul, NULL);
+		force_download('assets/buku/' . $data->file, NULL);
 	}
 }
 
