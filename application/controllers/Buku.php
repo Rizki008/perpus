@@ -192,6 +192,32 @@ class Buku extends CI_Controller
 		$this->load->view('siswa/v_wrapper', $data, FALSE);
 	}
 
+	//Update one item
+	public function upload($id_buku = NULL)
+	{
+		if ($this->form_validation->run() == FALSE) {
+			$config['upload_path'] = './assets/buku';
+			$config['allowed_types'] = 'pdf';
+			$config['max_size']     = '2000';
+			$this->upload->initialize($config);
+			$field_name = "file";
+			if (!$this->upload->do_upload($field_name)) {
+			} else {
+				$upload_data = array('uploads' => $this->upload->data());
+				$config['image_library'] = 'gd2';
+				$config['source_image'] = './assets/buku' . $upload_data['uploads']['file_name'];
+				$this->load->library('image_lib', $config);
+				$data = array(
+					'id_buku' => $id_buku,
+					'file' => $upload_data['uploads']['file_name'],
+				);
+				$this->m_buku->update($data);
+				$this->session->set_flashdata('pesan', 'Data Berhasil Uploads !!!');
+				redirect('buku');
+			}
+		}
+	}
+
 	public function download($id_buku)
 	{
 		$data = $this->db->get_where('buku', ['id_buku' => $id_buku])->row();
