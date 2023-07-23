@@ -230,6 +230,16 @@ class Buku extends CI_Controller
 		$data = $this->db->get_where('buku', ['id_buku' => $id_buku])->row();
 		force_download('assets/buku/' . $data->file, NULL);
 	}
+
+	public function baca($id_buku)
+	{
+		$data = array(
+			'title' => 'Baca Buku',
+			'baca' => $this->m_buku->baca($id_buku),
+			'isi' => 'siswa/buku/v_baca'
+		);
+		$this->load->view('siswa/v_wrapper', $data, FALSE);
+	}
 }
 
 /* End of file Buku.php */
