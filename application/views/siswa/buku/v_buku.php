@@ -52,6 +52,7 @@
 								<td><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" alt="" width="100px"></td>
 								<td>
 									<a href="<?= base_url('buku/download/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-download"></i><br>Download</a>
+									<a href="<?= base_url('buku/baca/' . $value->id_buku) ?>" class="btn btn-primary btn-sm"><i class="fa fa-book"></i><br>Baca</a>
 								</td>
 							</tr>
 						<?php } ?>
