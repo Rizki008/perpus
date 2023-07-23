@@ -24,6 +24,7 @@
 							<span></span><?= $this->session->userdata('nama') ?><i class="fa fa-angle-down m-l-5"></i></a>
 						<ul class="dropdown-menu dropdown-menu-right">
 							<li class="dropdown-divider"></li>
+							<a class="dropdown-item" href="<?= base_url('admin/login') ?>"><i class="fa fa-long-arrow-right"></i>Login</a>
 							<a class="dropdown-item" href="<?= base_url('admin/logout') ?>"><i class="fa fa-power-off"></i>Logout</a>
 						</ul>
 					</li>
