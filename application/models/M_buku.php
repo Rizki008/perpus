@@ -50,6 +50,25 @@ class M_buku extends CI_Model
 		$this->db->where('id_buku', $data['id_buku']);
 		$this->db->delete('buku', $data);
 	}
+
+	public function buku_pinjam()
+	{
+		$this->db->select('*');
+		$this->db->from('buku');
+		$this->db->join('peminjaman_buku', 'peminjaman_buku.no_buku = buku.no_buku', 'left');
+		$this->db->where('buku.status', 1);
+		$this->db->where('peminjaman_buku.status', 1);
+		$this->db->order_by('id_buku', 'desc');
+		return $this->db->get()->result();
+	}
+	public function bukud()
+	{
+		$this->db->select('*');
+		$this->db->from('buku');
+		$this->db->limit(4);
+		$this->db->order_by('id_buku', 'desc');
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file M_buku.php */
