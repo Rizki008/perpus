@@ -199,11 +199,17 @@ class Buku extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			$config['upload_path'] = './assets/buku';
 			$config['allowed_types'] = 'pdf';
-			$config['max_size']     = '2000';
+			$config['max_size']     = '5000';
 			$this->upload->initialize($config);
 			$field_name = "file";
 			if (!$this->upload->do_upload($field_name)) {
 			} else {
+				//hapus sampul di folder
+				$buku = $this->m_buku->detail($id_buku);
+				if ($buku->file !== "") {
+					unlink('./assets/buku/' . $buku->file);
+				}
+				//end
 				$upload_data = array('uploads' => $this->upload->data());
 				$config['image_library'] = 'gd2';
 				$config['source_image'] = './assets/buku' . $upload_data['uploads']['file_name'];
