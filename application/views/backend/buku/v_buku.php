@@ -52,6 +52,9 @@
 								<td>
 									<a href="<?= base_url('buku/edit/' . $value->id_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 									<a href="<?= base_url('buku/delete/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+									<button type="button" class="btn btn-orange btn-sm" data-toggle="modal" data-target="#add<?= $value->id_buku ?>">
+										<i class="fa fa-info"></i>
+									</button>
 								</td>
 							</tr>
 						<?php } ?>
@@ -59,3 +62,31 @@
 				</table>
 			</div>
 		</div>
+
+		<?php foreach ($buku as $key => $value) { ?>
+			<div class="modal fade" id="add<?= $value->id_buku ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Detail Peminjam Buku</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<form action="<?= base_url('buku/upload/' . $value->id_buku) ?>" enctype="multipart/form-data" accept-charset="utf-8" method="POST">
+							<div class="modal-body">
+								<div class="form-group">
+									<label>Upload File Buku</label>
+									<p>(Format PDF)</p>
+									<input type="file" name="file" class="form-control" placeholder="File Buku">
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary">Uploads</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
