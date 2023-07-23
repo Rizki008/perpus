@@ -9,7 +9,7 @@
 				<div class="font-strong"><?= $this->session->userdata('nama'); ?></div><small><?php if ($this->session->userdata('level_user') == '1') { ?>
 						Admin
 					<?php } elseif ($this->session->userdata('level_user') == '2') { ?>
-						Siswa
+						Anggota
 					<?php } ?></small>
 			</div>
 		</div>
