@@ -26,6 +26,7 @@
 							<th>Penerbit</th>
 							<th>ISBN</th>
 							<th>Sampul Buku</th>
+							<th>File Buku</th>
 							<th>Setting</th>
 						</tr>
 					</thead>
@@ -37,6 +38,7 @@
 							<th>Penerbit</th>
 							<th>ISBN</th>
 							<th>Sampul Buku</th>
+							<th>File Buku</th>
 							<th>Setting</th>
 						</tr>
 					</tfoot>
@@ -49,11 +51,12 @@
 								<td><?= $value->penerbit ?></td>
 								<td><?= $value->isbn ?></td>
 								<td><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" alt="" width="100px"></td>
+								<td><?= $value->file ?></td>
 								<td>
 									<a href="<?= base_url('buku/edit/' . $value->id_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 									<a href="<?= base_url('buku/delete/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-									<button type="button" class="btn btn-orange btn-sm" data-toggle="modal" data-target="#add<?= $value->id_buku ?>">
-										<i class="fa fa-info"></i>
+									<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add<?= $value->id_buku ?>">
+										<i class="fa fa-upload"></i>
 									</button>
 								</td>
 							</tr>
@@ -68,7 +71,7 @@
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLongTitle">Detail Peminjam Buku</h5>
+							<h5 class="modal-title" id="exampleModalLongTitle">Upload File Buku</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
