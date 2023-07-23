@@ -99,7 +99,7 @@
 						<?php $id_peminjaman = date('Ymd') . strtoupper(random_string('alnum', 8)); ?>
 						<input name="id_peminjaman" value="<?= $id_peminjaman ?>" type="hidden">
 						<?php
-						$user = $this->m_auth->user();
+						$user = $this->m_auth->userall();
 						$buku = $this->m_buku->buku();
 						?>
 						<!-- <div class="row"> -->
