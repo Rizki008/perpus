@@ -19,7 +19,7 @@
 <body class="bg-silver-300">
 	<div class="content">
 		<div class="brand">
-			<a class="link" href="index.html">AdminCAST</a>
+			<a class="link" href="index.html">Perpustakaan</a>
 		</div>
 		<?php
 		echo validation_errors('<div class="alert alert-warning alert-dismissible">
@@ -61,7 +61,7 @@
 			<div class="form-group">
 				<button class="btn btn-info btn-block" type="submit">Login</button>
 			</div>
-			<div class="text-center">Not a member?
+			<div class="text-center">Belum Punya Akun?
 				<a class="color-blue" href="<?= base_url('admin/register') ?>">Create accaunt</a>
 			</div>
 		</form>
