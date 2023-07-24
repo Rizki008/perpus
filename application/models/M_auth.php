@@ -60,4 +60,12 @@ class M_auth extends CI_Model
 		$this->db->order_by('id_user', 'desc');
 		return $this->db->get()->result();
 	}
+	public function detail($id_user)
+	{
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->where('id_user', $id_user);
+		$this->db->order_by('id_user', 'desc');
+		return $this->db->get()->result();
+	}
 }
