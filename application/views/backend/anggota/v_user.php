@@ -54,9 +54,11 @@
 									<?php if ($value->level_user === '2') { ?>
 										<a href="<?= base_url('admin/verifikasi/' . $value->id_user) ?>" class="btn btn-warning btn-sm"><i class="fa fa-check"></i>Verifikasi</a>
 									<?php } elseif ($value->level_user === '3') { ?>
-										<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_user ?>">
+										<!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_user ?>">
 											<i class="fa fa-print"></i><br>Cetak Kartu Anggota
-										</button>
+										</button> -->
+										<a href="<?= base_url('admin/detail/' . $value->id_user); ?>" target="_blank"><button class="btn btn-primary btn-sm">
+												<i class="fa fa-print"></i> Cetak Kartu</button></a>
 									<?php } ?>
 								</td>
 							</tr>
