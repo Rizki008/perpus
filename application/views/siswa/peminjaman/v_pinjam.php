@@ -38,28 +38,31 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<?php foreach ($pinjam as $key => $value) { ?>
-							<tr>
-								<td><?= $value->nama ?></td>
-								<td><?= $value->no_buku ?></td>
-								<td><?= $value->tgl_peminjaman ?></td>
-								<td><?= $value->tgl_pengembalian ?></td>
-								<td>
-									<?php $tgl1 = strtotime($value->tgl_peminjaman);
-									$tgl2 = strtotime($value->tgl_pengembalian);
-									$jarak = $tgl2 - $tgl1;
-									$hari = $jarak / 60 / 60 / 24;
-									echo $hari, ' Hari';
-									?>
-								</td>
-								<td><?php if ($value->status === '1') { ?>
-										<span class="badge badge-warning">Dipinjam</span>
-									<?php } elseif ($value->status === '2') { ?>
-										<span class="badge badge-success">Dikembalikan</span>
-									<?php } ?>
-								</td>
-							</tr>
-						<?php } ?>
+						<?php
+						if (!empty($pinjam)) {
+							foreach ($pinjam as $key => $value) { ?>
+								<tr>
+									<td><?= $value->nama ?> <?= $value->nama_peminjam ?></td>
+									<td><?= $value->no_buku ?></td>
+									<td><?= $value->tgl_peminjaman ?></td>
+									<td><?= $value->tgl_pengembalian ?></td>
+									<td>
+										<?php $tgl1 = strtotime($value->tgl_peminjaman);
+										$tgl2 = strtotime($value->tgl_pengembalian);
+										$jarak = $tgl2 - $tgl1;
+										$hari = $jarak / 60 / 60 / 24;
+										echo $hari, ' Hari';
+										?>
+									</td>
+									<td><?php if ($value->status === '1') { ?>
+											<span class="badge badge-warning">Dipinjam</span>
+										<?php } elseif ($value->status === '2') { ?>
+											<span class="badge badge-success">Dikembalikan</span>
+										<?php } ?>
+									</td>
+								</tr>
+						<?php }
+						} ?>
 					</tbody>
 				</table>
 			</div>
