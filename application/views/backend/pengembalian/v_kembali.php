@@ -24,7 +24,6 @@
 							<th>No Buku</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Status Buku</th>
-							<th>Setting</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -34,7 +33,6 @@
 							<th>No Buku</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Status Buku</th>
-							<th>Setting</th>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -49,9 +47,6 @@
 									<?php } elseif ($value->status === '2') { ?>
 										<span class="badge badge-danger">Denda</span>
 									<?php } ?>
-								</td>
-								<td>
-									<a href="<?= base_url('master/edit_kembali/' . $value->id_pengembalian) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 								</td>
 							</tr>
 						<?php } ?>
