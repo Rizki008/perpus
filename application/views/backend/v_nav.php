@@ -46,10 +46,19 @@
 					<span class="nav-label">Saran</span>
 				</a>
 			</li>
+			<li class="heading">LAPORAN</li>
+			<li>
+				<a href="<?= base_url('laporan') ?>"><i class="sidebar-item-icon fa fa-info"></i>
+					<span class="nav-label">Laporan</span>
+				</a>
+			</li>
 			<li class="heading">USER</li>
 			<li>
 				<a href="<?= base_url('admin/user') ?>"><i class="sidebar-item-icon fa fa-user-circle-o"></i>
 					<span class="nav-label">User</span>
+				</a>
+				<a href="<?= base_url('admin/anggota') ?>"><i class="sidebar-item-icon fa fa-user-plus"></i>
+					<span class="nav-label">Data Anggota</span>
 				</a>
 			</li>
 		</ul>
