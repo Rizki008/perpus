@@ -72,13 +72,23 @@
 			</div>
 			<div class="form-group">
 				<div class="input-group-icon right">
-					<div class="input-icon"><i class="fa fa-lock font-16"></i></div>
+					<div class="input-icon"><i class="fa fa-phone font-16"></i></div>
 					<input class="form-control" type="number" name="no_hp" value="<?= set_value('no_hp') ?>" placeholder="No HP">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-group-icon right">
-					<div class="input-icon"><i class="fa fa-lock font-16"></i></div>
+					<div class="input-icon"><i class="fa fa-save font-16"></i></div>
+					<select name="level_user" id="level_user" class="form-control">
+						<option>---Daftar Sebagai---</option>
+						<option value="2">Siswa</option>
+						<option value="3">Anggota</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group-icon right">
+					<div class="input-icon"><i class="fa fa-location-arrow font-16"></i></div>
 					<input class="form-control" type="text" name="alamat" value="<?= set_value('alamat') ?>" placeholder="Alamat">
 				</div>
 			</div>
