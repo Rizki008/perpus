@@ -36,6 +36,8 @@ class Login_user
 				redirect('admin');
 			} elseif ($level_user == 2) {
 				redirect('home/siswa');
+			} elseif ($level_user == 3) {
+				redirect('home/siswa');
 			}
 		} else {
 			$this->ci->session->set_flashdata('error', 'Username Atau Password Error');
