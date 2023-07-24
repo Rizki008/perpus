@@ -167,6 +167,17 @@ class Admin extends CI_Controller
 		$this->session->set_flashdata('pesan', 'Delete Data User Admin Berhasi!!!');
 		redirect('admin/user');
 	}
+
+	public function verifikasi($id_user)
+	{
+		$data = array(
+			'id_user' => $id_user,
+			'level_user' => 3
+		);
+		$this->m_auth->update($data);
+		$this->session->set_flashdata('pesan', 'Verifikasi Data Anggota Berhasi!!!');
+		redirect('admin/anggota');
+	}
 }
 
 /* End of file Login.php */
