@@ -178,6 +178,37 @@ class Admin extends CI_Controller
 		$this->session->set_flashdata('pesan', 'Verifikasi Data Anggota Berhasi!!!');
 		redirect('admin/anggota');
 	}
+
+	public function detail($id_user)
+	{
+		// if ($this->session->userdata('level_user') == '3') {
+		// 	if ($this->uri->segment('3') == '') {
+		// 		echo '<script>alert("halaman tidak ditemukan");window.location="' . base_url('user') . '";</script>';
+		// 	}
+		// 	$this->data['idbo'] = $this->session->userdata('ses_id');
+		// 	$count = $this->M_Admin->CountTableId('tbl_login', 'id_login', $this->uri->segment('3'));
+		// 	if ($count > 0) {
+		// 		$this->data['user'] = $this->M_Admin->get_tableid_edit('tbl_login', 'id_login', $this->uri->segment('3'));
+		// 	} else {
+		// 		echo '<script>alert("USER TIDAK DITEMUKAN");window.location="' . base_url('user') . '"</script>';
+		// 	}
+		// } elseif ($this->session->userdata('level') == 'Anggota') {
+		// 	$this->data['idbo'] = $this->session->userdata('ses_id');
+		// 	$count = $this->M_Admin->CountTableId('tbl_login', 'id_login', $this->session->userdata('ses_id'));
+		// 	if ($count > 0) {
+		// 		$this->data['user'] = $this->M_Admin->get_tableid_edit('tbl_login', 'id_login', $this->session->userdata('ses_id'));
+		// 	} else {
+		// 		echo '<script>alert("USER TIDAK DITEMUKAN");window.location="' . base_url('user') . '"</script>';
+		// 	}
+		// }
+		// $this->data['title_web'] = 'Print Kartu Anggota ';
+		// $this->load->view('user/detail', $this->data);
+		$data = array(
+			'title' => 'cetak kartu anggota',
+			'user' => $this->m_auth->detail($id_user),
+		);
+		$this->load->view('backend/anggota/detail', $data, FALSE);
+	}
 }
 
 /* End of file Login.php */
