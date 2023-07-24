@@ -32,6 +32,20 @@ class Master extends CI_Controller
 				'isi' => 'siswa/peminjaman/v_pinjam'
 			);
 			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') == 3) {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'pinjam' => $this->m_master->pinjam(),
+				'isi' => 'siswa/peminjaman/v_pinjam'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') == '') {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'pinjam' => $this->m_master->pinjam(),
+				'isi' => 'siswa/peminjaman/v_pinjam'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
 		}
 	}
 	public function pengembalian()
@@ -44,6 +58,20 @@ class Master extends CI_Controller
 			);
 			$this->load->view('backend/v_wrapper', $data, FALSE);
 		} elseif ($this->session->userdata('level_user') == 2) {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'kembali' => $this->m_master->kembali(),
+				'isi' => 'siswa/pengembalian/v_kembali'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') == 3) {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'kembali' => $this->m_master->kembali(),
+				'isi' => 'siswa/pengembalian/v_kembali'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') == '') {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'kembali' => $this->m_master->kembali(),
@@ -110,7 +138,11 @@ class Master extends CI_Controller
 		);
 		$this->m_master->update_status_buku($data['no_buku'], $status);
 		$this->session->set_flashdata('pesan', 'Peminjaman Berhasil!!!');
-		redirect('master/peminjaman');
+		if ($this->session->userdata('username') == "") {
+			redirect('buku/buku');
+		} else {
+			redirect('master/peminjaman');
+		}
 	}
 
 	//Update one item
