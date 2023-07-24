@@ -25,6 +25,8 @@ class Admin extends CI_Controller
 			'total_denda' => $this->m_master->total_denda(),
 			'total_kembali' => $this->m_master->total_kembali(),
 			'grafik_buku' => $this->m_master->grafik_buku(),
+			'grafik_buku_pinjam' => $this->m_master->grafik_buku_pinjam(),
+			'grafik_buku_baca' => $this->m_master->grafik_buku_baca(),
 			'isi' => 'backend/v_admin'
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);
@@ -70,6 +72,7 @@ class Admin extends CI_Controller
 			'max_length' => '%s Maksimal 13',
 		));
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+		$this->form_validation->set_rules('level_user', 'Status Anggota / Siswa', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 
 		if ($this->form_validation->run() ==  FALSE) {
 			$data = array(
@@ -84,7 +87,7 @@ class Admin extends CI_Controller
 				'password' => $this->input->post('password'),
 				'no_hp' => $this->input->post('no_hp'),
 				'alamat' => $this->input->post('alamat'),
-				'level_user' => 2,
+				'level_user' => $this->input->post('level_user'),
 			);
 			$this->m_auth->registrasi($data);
 			$this->session->set_flashdata('pesan', 'Register Berhasi, Silahkan Untuk Login');
@@ -113,6 +116,15 @@ class Admin extends CI_Controller
 			'title' => 'Data User Admin',
 			'user' => $this->m_auth->user(),
 			'isi' => 'backend/user/v_user'
+		);
+		$this->load->view('backend/v_wrapper', $data, FALSE);
+	}
+	public function anggota()
+	{
+		$data = array(
+			'title' => 'Data Anggota',
+			'user' => $this->m_auth->user_anggota(),
+			'isi' => 'backend/anggota/v_user'
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);
 	}
