@@ -240,6 +240,19 @@ class Buku extends CI_Controller
 		);
 		$this->load->view('siswa/v_wrapper', $data, FALSE);
 	}
+
+	public function baca_buku($id_buku)
+	{
+		$data = array(
+			'id_buku' => $this->input->post('id_buku'),
+			'id_user' => $this->input->post('id_user'),
+			'nama_baca' => $this->input->post('nama_baca'),
+		);
+		$this->m_buku->bacabuku($data);
+		$this->session->set_flashdata('pesan', 'Silahkan Untuk Membaca');
+
+		redirect('buku/baca/' . $id_buku);
+	}
 }
 
 /* End of file Buku.php */
