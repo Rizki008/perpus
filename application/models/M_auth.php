@@ -48,7 +48,7 @@ class M_auth extends CI_Model
 		$this->db->select('*');
 		$this->db->from('user');
 		// $this->db->where('level_user', 2);
-		$this->db->where('level_user', 3);
+		$this->db->where('level_user!=', 1);
 		$this->db->order_by('id_user', 'desc');
 		return $this->db->get()->result();
 	}
