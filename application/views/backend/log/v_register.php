@@ -82,7 +82,7 @@
 					<select name="level_user" id="level_user" class="form-control">
 						<option>---Daftar Sebagai---</option>
 						<option value="2">Siswa</option>
-						<option value="3">Anggota</option>
+						<option value="2">Anggota</option>
 					</select>
 				</div>
 			</div>
