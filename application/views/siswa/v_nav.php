@@ -6,11 +6,16 @@
 				<img src="<?= base_url('backend/dist') ?>/assets/img/admin-avatar.png" width="45px" />
 			</div>
 			<div class="admin-info">
-				<div class="font-strong"><?= $this->session->userdata('nama'); ?></div><small><?php if ($this->session->userdata('level_user') == '1') { ?>
+				<div class="font-strong"><?= $this->session->userdata('nama'); ?></div>
+				<small>
+					<?php if ($this->session->userdata('level_user') == '1') { ?>
 						Admin
 					<?php } elseif ($this->session->userdata('level_user') == '2') { ?>
+						Siswa
+					<?php } elseif ($this->session->userdata('level_user') == '3') { ?>
 						Anggota
-					<?php } ?></small>
+					<?php } ?>
+				</small>
 			</div>
 		</div>
 		<ul class="side-menu metismenu">
