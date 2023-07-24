@@ -69,6 +69,11 @@ class M_buku extends CI_Model
 		$this->db->order_by('id_buku', 'desc');
 		return $this->db->get()->result();
 	}
+
+	public function bacabuku($data)
+	{
+		$this->db->insert('baca', $data);
+	}
 }
 
 /* End of file M_buku.php */
