@@ -20,7 +20,7 @@
 				<ul class="nav navbar-toolbar">
 					<?php if ($this->session->userdata('username') == "") { ?>
 						<li class="dropdown dropdown-notification">
-							<a class="nav-link" href="<?= base_url('home') ?>"><i class="fa fa-long-arrow-left"></i>Login/Register</a>
+							<a class="nav-link" href="<?= base_url('home') ?>"><i class="fa fa-forward"></i>Login/Register</a>
 						</li>
 					<?php } else { ?>
 						<li class="dropdown dropdown-user">
