@@ -33,6 +33,7 @@
 							<th>Pengarang</th>
 							<th>Penerbit</th>
 							<th>ISBN</th>
+							<th>Status Buku</th>
 							<th>Sampul Buku</th>
 							<th>Setting</th>
 						</tr>
@@ -44,6 +45,7 @@
 							<th>Pengarang</th>
 							<th>Penerbit</th>
 							<th>ISBN</th>
+							<th>Status Buku</th>
 							<th>Sampul Buku</th>
 							<th>Setting</th>
 						</tr>
@@ -56,6 +58,13 @@
 								<td><?= $value->pengarang ?></td>
 								<td><?= $value->penerbit ?></td>
 								<td><?= $value->isbn ?></td>
+								<td>
+									<?php if ($value->status === '1') { ?>
+										<span class="badge badge-warning">Buku Dipinjam</span>
+									<?php } elseif ($value->status === '0') { ?>
+										<span class="badge badge-success">Buku Diperpus</span>
+									<?php } ?>
+								</td>
 								<td><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" alt="" width="100px"></td>
 								<td>
 									<a href="<?= base_url('buku/download/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-download"></i><br>Download</a>
