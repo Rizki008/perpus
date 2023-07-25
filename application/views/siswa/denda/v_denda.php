@@ -5,7 +5,7 @@
 		<h1 class="page-title"><?= $title ?></h1>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="index.html"><i class="la la-home font-20"></i></a>
+				<a href="<?= base_url('admin') ?>"><i class="la la-home font-20"></i></a>
 			</li>
 			<li class="breadcrumb-item"><?= $title ?></li>
 		</ol>
@@ -22,10 +22,8 @@
 							<th>No Pengembalian</th>
 							<th>Nama</th>
 							<th>No Buku</th>
-							<th>Jumlah Buku</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Jumlah Denda</th>
-							<th>Setting</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -33,10 +31,8 @@
 							<th>No Pengembalian</th>
 							<th>Nama</th>
 							<th>No Buku</th>
-							<th>Jumlah Buku</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Jumlah Denda</th>
-							<th>Setting</th>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -45,12 +41,8 @@
 								<td><?= $value->id_peminjaman ?></td>
 								<td><?= $value->nama ?></td>
 								<td><?= $value->no_buku ?></td>
-								<td><?= $value->qty ?></td>
 								<td><?= $value->tgl_pengembalian ?></td>
-								<td><?= $value->jml_pembayaran ?></td>
-								<td>
-									<a href="<?= base_url('master/edit_denda/' . $value->id_denda) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-								</td>
+								<td>Rp. <?= number_format($value->jml_pembayaran, 0) ?></td>
 							</tr>
 						<?php } ?>
 					</tbody>
