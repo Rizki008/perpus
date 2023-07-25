@@ -34,7 +34,7 @@ class Login_user
 
 			if ($level_user === '1' || $level_user === '2' || $level_user === '3') {
 				redirect('admin');
-			} elseif ($level_user === '4' || $level_user === '5') {
+			} elseif ($level_user === '4' || $level_user === '5' || $level_user === '6') {
 				redirect('home/siswa');
 			}
 		} else {
