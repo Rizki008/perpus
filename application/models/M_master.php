@@ -9,7 +9,7 @@ class M_master extends CI_Model
 
 	public function pinjam()
 	{
-		if ($this->session->userdata('level_user') === '1') {
+		if ($this->session->userdata('level_user') === '1' || $this->session->userdata('level_user') === '2' || $this->session->userdata('level_user') === '3') {
 			$this->db->select('peminjaman_buku.id_peminjaman,user.nama,peminjaman_buku.nama_peminjam,buku.no_buku,peminjaman_buku.tgl_peminjaman,peminjaman_buku.tgl_pengembalian,peminjaman_buku.status,buku.judul');
 			$this->db->from('peminjaman_buku');
 			$this->db->join('user', 'user.id_user = peminjaman_buku.id_user', 'left');
@@ -17,16 +17,7 @@ class M_master extends CI_Model
 			$this->db->where('peminjaman_buku.status', '1');
 			$this->db->order_by('id_peminjaman', 'desc');
 			return $this->db->get()->result();
-		} elseif ($this->session->userdata('level_user') === '2') {
-			$this->db->select('peminjaman_buku.id_peminjaman,user.nama,peminjaman_buku.nama_peminjam,buku.no_buku,peminjaman_buku.tgl_peminjaman,peminjaman_buku.tgl_pengembalian,peminjaman_buku.status,buku.judul');
-			$this->db->from('peminjaman_buku');
-			$this->db->join('user', 'user.id_user = peminjaman_buku.id_user', 'left');
-			$this->db->join('buku', 'buku.no_buku = peminjaman_buku.no_buku', 'left');
-			$this->db->where('peminjaman_buku.status', '1');
-			$this->db->where('user.id_user', $this->session->userdata('id_user'));
-			$this->db->order_by('id_peminjaman', 'desc');
-			return $this->db->get()->result();
-		} elseif ($this->session->userdata('level_user') === '3') {
+		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5' || $this->session->userdata('level_user') === '6') {
 			$this->db->select('peminjaman_buku.id_peminjaman,user.nama,peminjaman_buku.nama_peminjam,buku.no_buku,peminjaman_buku.tgl_peminjaman,peminjaman_buku.tgl_pengembalian,peminjaman_buku.status,buku.judul');
 			$this->db->from('peminjaman_buku');
 			$this->db->join('user', 'user.id_user = peminjaman_buku.id_user', 'left');
@@ -35,6 +26,16 @@ class M_master extends CI_Model
 			$this->db->where('user.id_user', $this->session->userdata('id_user'));
 			$this->db->order_by('id_peminjaman', 'desc');
 			return $this->db->get()->result();
+			// } 
+			// elseif ($this->session->userdata('level_user') === '3') {
+			// 	$this->db->select('peminjaman_buku.id_peminjaman,user.nama,peminjaman_buku.nama_peminjam,buku.no_buku,peminjaman_buku.tgl_peminjaman,peminjaman_buku.tgl_pengembalian,peminjaman_buku.status,buku.judul');
+			// 	$this->db->from('peminjaman_buku');
+			// 	$this->db->join('user', 'user.id_user = peminjaman_buku.id_user', 'left');
+			// 	$this->db->join('buku', 'buku.no_buku = peminjaman_buku.no_buku', 'left');
+			// 	$this->db->where('peminjaman_buku.status', '1');
+			// 	$this->db->where('user.id_user', $this->session->userdata('id_user'));
+			// 	$this->db->order_by('id_peminjaman', 'desc');
+			// 	return $this->db->get()->result();
 		} elseif ($this->session->userdata('level_user') == '') {
 			$this->db->select('peminjaman_buku.id_peminjaman,user.nama,peminjaman_buku.nama_peminjam,buku.no_buku,peminjaman_buku.tgl_peminjaman,peminjaman_buku.tgl_pengembalian,peminjaman_buku.status,buku.judul');
 			$this->db->from('peminjaman_buku');
@@ -48,7 +49,7 @@ class M_master extends CI_Model
 	}
 	public function kembali()
 	{
-		if ($this->session->userdata('level_user') === '1') {
+		if ($this->session->userdata('level_user') === '1' || $this->session->userdata('level_user') === '2' || $this->session->userdata('level_user') === '3') {
 			$this->db->select('pengembalian_buku.id_pengembalian,peminjaman_buku.id_peminjaman,peminjaman_buku.nama_peminjam,user.nama,buku.no_buku,buku.judul,pengembalian_buku.tgl_pengembalian,peminjaman_buku.tgl_peminjaman,pengembalian_buku.status,saran.status_saran');
 			$this->db->from('pengembalian_buku');
 			$this->db->join('peminjaman_buku', 'peminjaman_buku.id_peminjaman = pengembalian_buku.id_peminjaman', 'left');
@@ -57,17 +58,7 @@ class M_master extends CI_Model
 			$this->db->join('saran', 'saran.id_pengembalian = pengembalian_buku.id_pengembalian', 'left');
 			$this->db->order_by('pengembalian_buku.id_pengembalian', 'desc');
 			return $this->db->get()->result();
-		} elseif ($this->session->userdata('level_user') === '2') {
-			$this->db->select('pengembalian_buku.id_pengembalian,peminjaman_buku.id_peminjaman,peminjaman_buku.nama_peminjam,user.nama,buku.no_buku,buku.judul,pengembalian_buku.tgl_pengembalian,peminjaman_buku.tgl_peminjaman,pengembalian_buku.status,saran.status_saran');
-			$this->db->from('pengembalian_buku');
-			$this->db->join('peminjaman_buku', 'peminjaman_buku.id_peminjaman = pengembalian_buku.id_peminjaman', 'left');
-			$this->db->join('user', 'user.id_user = peminjaman_buku.id_user', 'left');
-			$this->db->join('buku', 'buku.no_buku = peminjaman_buku.no_buku', 'left');
-			$this->db->where('user.id_user', $this->session->userdata('id_user'));
-			$this->db->join('saran', 'saran.id_pengembalian = pengembalian_buku.id_pengembalian', 'left');
-			$this->db->order_by('pengembalian_buku.id_pengembalian', 'desc');
-			return $this->db->get()->result();
-		} elseif ($this->session->userdata('level_user') === '3') {
+		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5' || $this->session->userdata('level_user') === '6') {
 			$this->db->select('pengembalian_buku.id_pengembalian,peminjaman_buku.id_peminjaman,peminjaman_buku.nama_peminjam,user.nama,buku.no_buku,buku.judul,pengembalian_buku.tgl_pengembalian,peminjaman_buku.tgl_peminjaman,pengembalian_buku.status,saran.status_saran');
 			$this->db->from('pengembalian_buku');
 			$this->db->join('peminjaman_buku', 'peminjaman_buku.id_peminjaman = pengembalian_buku.id_peminjaman', 'left');
@@ -77,6 +68,16 @@ class M_master extends CI_Model
 			$this->db->join('saran', 'saran.id_pengembalian = pengembalian_buku.id_pengembalian', 'left');
 			$this->db->order_by('pengembalian_buku.id_pengembalian', 'desc');
 			return $this->db->get()->result();
+			// } elseif ($this->session->userdata('level_user') === '3') {
+			// 	$this->db->select('pengembalian_buku.id_pengembalian,peminjaman_buku.id_peminjaman,peminjaman_buku.nama_peminjam,user.nama,buku.no_buku,buku.judul,pengembalian_buku.tgl_pengembalian,peminjaman_buku.tgl_peminjaman,pengembalian_buku.status,saran.status_saran');
+			// 	$this->db->from('pengembalian_buku');
+			// 	$this->db->join('peminjaman_buku', 'peminjaman_buku.id_peminjaman = pengembalian_buku.id_peminjaman', 'left');
+			// 	$this->db->join('user', 'user.id_user = peminjaman_buku.id_user', 'left');
+			// 	$this->db->join('buku', 'buku.no_buku = peminjaman_buku.no_buku', 'left');
+			// 	$this->db->where('user.id_user', $this->session->userdata('id_user'));
+			// 	$this->db->join('saran', 'saran.id_pengembalian = pengembalian_buku.id_pengembalian', 'left');
+			// 	$this->db->order_by('pengembalian_buku.id_pengembalian', 'desc');
+			// 	return $this->db->get()->result();
 		} elseif ($this->session->userdata('level_user') == '') {
 			$this->db->select('pengembalian_buku.id_pengembalian,peminjaman_buku.id_peminjaman,user.nama,peminjaman_buku.nama_peminjam,buku.no_buku,buku.judul,pengembalian_buku.tgl_pengembalian,peminjaman_buku.tgl_peminjaman,pengembalian_buku.status,saran.status_saran');
 			$this->db->from('pengembalian_buku');
