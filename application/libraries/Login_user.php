@@ -32,11 +32,9 @@ class Login_user
 			$this->ci->session->set_userdata('alamat', $alamat);
 			$this->ci->session->set_userdata('level_user', $level_user);
 
-			if ($level_user == 1) {
+			if ($level_user === '1' || $level_user === '2' || $level_user === '3') {
 				redirect('admin');
-			} elseif ($level_user == 2) {
-				redirect('home/siswa');
-			} elseif ($level_user == 3) {
+			} elseif ($level_user === '4' || $level_user === '5') {
 				redirect('home/siswa');
 			}
 		} else {
