@@ -25,7 +25,7 @@ class Master extends CI_Controller
 				'isi' => 'backend/peminjaman/v_pinjam'
 			);
 			$this->load->view('backend/v_wrapper', $data, FALSE);
-		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5') {
+		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5' || $this->session->userdata('level_user') === '6') {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'pinjam' => $this->m_master->pinjam(),
