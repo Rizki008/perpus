@@ -18,28 +18,21 @@ class Master extends CI_Controller
 	// List all your items
 	public function peminjaman()
 	{
-		if ($this->session->userdata('level_user') == 1) {
+		if ($this->session->userdata('level_user') === '1' || $this->session->userdata('level_user') === '2' || $this->session->userdata('level_user') === '3') {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'pinjam' => $this->m_master->pinjam(),
 				'isi' => 'backend/peminjaman/v_pinjam'
 			);
 			$this->load->view('backend/v_wrapper', $data, FALSE);
-		} elseif ($this->session->userdata('level_user') == 2) {
+		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5') {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'pinjam' => $this->m_master->pinjam(),
 				'isi' => 'siswa/peminjaman/v_pinjam'
 			);
 			$this->load->view('siswa/v_wrapper', $data, FALSE);
-		} elseif ($this->session->userdata('level_user') == 3) {
-			$data = array(
-				'title' => 'Data Peminjaman Buku',
-				'pinjam' => $this->m_master->pinjam(),
-				'isi' => 'siswa/peminjaman/v_pinjam'
-			);
-			$this->load->view('siswa/v_wrapper', $data, FALSE);
-		} elseif ($this->session->userdata('level_user') == '') {
+		} else {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'pinjam' => $this->m_master->pinjam(),
@@ -50,28 +43,21 @@ class Master extends CI_Controller
 	}
 	public function pengembalian()
 	{
-		if ($this->session->userdata('level_user') == 1) {
+		if ($this->session->userdata('level_user') === '1' || $this->session->userdata('level_user') === '2' || $this->session->userdata('level_user') === '3') {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'kembali' => $this->m_master->kembali(),
 				'isi' => 'backend/pengembalian/v_kembali'
 			);
 			$this->load->view('backend/v_wrapper', $data, FALSE);
-		} elseif ($this->session->userdata('level_user') == 2) {
+		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5' || $this->session->userdata('level_user') === '6') {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'kembali' => $this->m_master->kembali(),
 				'isi' => 'siswa/pengembalian/v_kembali'
 			);
 			$this->load->view('siswa/v_wrapper', $data, FALSE);
-		} elseif ($this->session->userdata('level_user') == 3) {
-			$data = array(
-				'title' => 'Data Peminjaman Buku',
-				'kembali' => $this->m_master->kembali(),
-				'isi' => 'siswa/pengembalian/v_kembali'
-			);
-			$this->load->view('siswa/v_wrapper', $data, FALSE);
-		} elseif ($this->session->userdata('level_user') == '') {
+		} else {
 			$data = array(
 				'title' => 'Data Peminjaman Buku',
 				'kembali' => $this->m_master->kembali(),
@@ -82,21 +68,46 @@ class Master extends CI_Controller
 	}
 	public function denda()
 	{
-		$data = array(
-			'title' => 'Data Peminjaman Buku',
-			'denda' => $this->m_master->denda(),
-			'isi' => 'backend/denda/v_denda'
-		);
-		$this->load->view('backend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') === '2') {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'denda' => $this->m_master->denda(),
+				'isi' => 'backend/denda/v_denda'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5' || $this->session->userdata('level_user') === '6') {
+			$data = array(
+				'title' => 'Data Peminjaman Buku',
+				'denda' => $this->m_master->denda_info(),
+				'isi' => 'siswa/denda/v_denda'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		}
 	}
 	public function saran_buku()
 	{
-		$data = array(
-			'title' => 'Data Saran Buku',
-			'saran_buku' => $this->m_master->saran_buku(),
-			'isi' => 'backend/saran/v_saran'
-		);
-		$this->load->view('backend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') === '3') {
+			$data = array(
+				'title' => 'Data Saran Buku',
+				'saran_buku' => $this->m_master->saran_buku(),
+				'isi' => 'backend/saran/v_saran'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		} elseif ($this->session->userdata('level_user') === '4' || $this->session->userdata('level_user') === '5' || $this->session->userdata('level_user') === '6') {
+			$data = array(
+				'title' => 'Data Saran Buku',
+				'saran_buku' => $this->m_master->saran_buku(),
+				'isi' => 'siswa/saran/v_saran'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		} else {
+			$data = array(
+				'title' => 'Data Saran Buku',
+				'saran_buku' => $this->m_master->saran_buku(),
+				'isi' => 'siswa/saran/v_saran'
+			);
+			$this->load->view('siswa/v_wrapper', $data, FALSE);
+		}
 	}
 
 	// Add a new item
