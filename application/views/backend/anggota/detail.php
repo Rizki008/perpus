@@ -4,13 +4,13 @@ if (!empty($_GET['download'] == 'doc')) {
 	header("Content-Type: application/vnd.ms-word");
 	header("Expires: 0");
 	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-	header("content-disposition: attachment;filename=" . date('d-m-Y') . "_laporan_rekam_medis.doc");
+	header("content-disposition: attachment;filename=" . date('d-m-Y') . "_laporan_data_anggota.doc");
 }
 if (!empty($_GET['download'] == 'xls')) {
 	header("Content-Type: application/force-download");
 	header("Cache-Control: no-cache, must-revalidate");
 	header("Expires: 0");
-	header("content-disposition: attachment;filename=" . date('d-m-Y') . "_laporan_rekam_medis.xls");
+	header("content-disposition: attachment;filename=" . date('d-m-Y') . "_laporan_data_anggota.xls");
 }
 ?>
 <?php
@@ -135,11 +135,11 @@ $tgl2 = $hari2 . ' ' . $bl2 . ' ' . $tahun2;
 								</table>
 							<?php } ?>
 						</div>
-						<!-- <div class="col-sm-4 text-center">
+						<div class="col-sm-4 text-center">
 							<center>
-								<img src="<?php echo base_url(); ?>assets_style/image/<?php echo $user->foto; ?>" style="width:3cm;height:4cm;" class="img-responsive">
+								<img src="<?php echo base_url(); ?>assets/foto/<?php echo $user->foto; ?>" style="width:3cm;height:4cm;" class="img-responsive">
 							</center>
-						</div> -->
+						</div>
 					</div>
 				</div>
 			</div>
