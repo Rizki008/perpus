@@ -44,7 +44,7 @@
 		}
 
 		?>
-		<form id="login-form" action="<?= base_url('admin/register') ?>" method="post">
+		<form id="login-form" action="<?= base_url('admin/register') ?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 			<h2 class="login-title">Registrasi</h2>
 			<div class="form-group">
 				<div class="input-group-icon right">
@@ -81,9 +81,15 @@
 					<div class="input-icon"><i class="fa fa-save font-16"></i></div>
 					<select name="level_user" id="level_user" class="form-control">
 						<option>---Daftar Sebagai---</option>
-						<option value="2">Siswa</option>
-						<option value="2">Anggota</option>
+						<option value="6">Pengunjung</option>
+						<option value="4">Anggota</option>
 					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group-icon right">
+					<div class="input-icon"><i class="fa fa-photo font-16"></i></div>
+					<input class="form-control" type="file" name="foto" id="foto" value="<?= set_value('foto') ?>" hidden>
 				</div>
 			</div>
 			<div class="form-group">
@@ -95,7 +101,7 @@
 			<div class="form-group">
 				<button class="btn btn-info btn-block" type="submit">Register</button>
 			</div>
-			<div class="text-center">Not a member?
+			<div class="text-center">Sudah Punya akun?
 				<a class="color-blue" href="<?= base_url('home') ?>">Login</a>
 			</div>
 		</form>
@@ -114,8 +120,12 @@
 	<script src="<?= base_url() ?>backend/dist/assets/vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
 	<!-- CORE SCRIPTS-->
 	<script src="<?= base_url() ?>backend/dist/assets/js/app.js" type="text/javascript"></script>
+
+	<!-- SHOW HIDE -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 	<!-- PAGE LEVEL SCRIPTS-->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(function() {
 			$('#login-form').validate({
 				errorClass: "help-block",
@@ -134,6 +144,19 @@
 				unhighlight: function(e) {
 					$(e).closest(".form-group").removeClass("has-error")
 				},
+			});
+		});
+	</script> -->
+
+	<script type="text/javascript">
+		$(window).load(function() {
+			$("#level_user").change(function() {
+				console.log($("#level_user option:selected").val());
+				if ($("#level_user option:selected").val() == '6') {
+					$('#foto').prop('hidden', 'true');
+				} else {
+					$('#foto').prop('hidden', false);
+				}
 			});
 		});
 	</script>
