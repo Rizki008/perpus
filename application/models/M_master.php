@@ -100,6 +100,18 @@ class M_master extends CI_Model
 		$this->db->order_by('id_pembayaran', 'desc');
 		return $this->db->get()->result();
 	}
+	public function denda_info()
+	{
+		$this->db->select('*');
+		$this->db->from('denda');
+		$this->db->join('pengembalian_buku', 'pengembalian_buku.id_pengembalian = denda.id_pengembalian', 'left');
+		$this->db->join('peminjaman_buku', 'peminjaman_buku.id_peminjaman = pengembalian_buku.id_peminjaman', 'left');
+		$this->db->join('user', 'user.id_user = peminjaman_buku.id_user', 'left');
+		$this->db->join('buku', 'buku.no_buku = peminjaman_buku.no_buku', 'left');
+		$this->db->where('user.id_user', $this->session->userdata('id_user'));
+		$this->db->order_by('id_pembayaran', 'desc');
+		return $this->db->get()->result();
+	}
 	public function saran_buku()
 	{
 		$this->db->select('*');
