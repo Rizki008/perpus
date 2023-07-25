@@ -51,7 +51,13 @@
 								<td><?= $value->no_hp ?></td>
 								<td><?= $value->alamat ?></td>
 								<td>
-									<span class="badge badge-primary">Admin</span>
+									<?php if ($value->level_user === '1') { ?>
+										<span class="badge badge-primary">Admin</span>
+									<?php } elseif ($value->level_user === '2') { ?>
+										<span class="badge badge-warning">Staff</span>
+									<?php } elseif ($value->level_user === '3') { ?>
+										<span class="badge badge-success">Kepala Perpustakaan</span>
+									<?php } ?>
 								</td>
 								<td>
 									<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_user ?>">
@@ -92,6 +98,15 @@
 							<div class="form-group">
 								<label>No hp</label>
 								<input type="number" name="no_hp" class="form-control" placeholder="No HP">
+							</div>
+							<div class="form-group">
+								<label>Level User</label>
+								<select name="level_user" class="form-control">
+									<option>---Pilih Level User---</option>
+									<option value="1">Admin</option>
+									<option value="2">Staff</option>
+									<option value="3">Kepala Perpustakaan</option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label>Alamat</label>
@@ -136,6 +151,24 @@
 								<div class="form-group">
 									<label>No Hp</label>
 									<input type="number" name="no_hp" value="<?= $value->no_hp ?>" class="form-control" placeholder="No Hp">
+								</div>
+								<div class="form-group">
+									<label>Level User</label>
+									<select name="level_user" class="form-control">
+										<option value="<?= $value->level_user ?>">
+											<?php if ($value->level_user === '1') { ?>
+												Admin
+											<?php } elseif ($value->level_user === '2') { ?>
+												Staff
+											<?php } elseif ($value->level_user === '3') { ?>
+												Kepala Perpustakaan
+											<?php } ?>
+										</option>
+										<option>---Pilih Level User---</option>
+										<option value="1">Admin</option>
+										<option value="2">Staff</option>
+										<option value="3">Kepala Perpustakaan</option>
+									</select>
 								</div>
 								<div class="form-group">
 									<label>Alamat</label>
