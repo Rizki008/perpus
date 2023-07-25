@@ -26,6 +26,7 @@
 							<th>Username</th>
 							<th>No Hp</th>
 							<th>Alamat</th>
+							<th>Foto</th>
 							<th>Status</th>
 							<th>Setting</th>
 						</tr>
@@ -36,6 +37,7 @@
 							<th>Username</th>
 							<th>No Hp</th>
 							<th>Alamat</th>
+							<th>Foto</th>
 							<th>Status</th>
 							<th>Setting</th>
 						</tr>
@@ -47,16 +49,20 @@
 								<td><?= $value->username ?></td>
 								<td><?= $value->no_hp ?></td>
 								<td><?= $value->alamat ?></td>
+								<td><img src="<?= base_url('assets/foto/' . $value->foto) ?>" width="100px" alt=""></td>
 								<td>
-									<span class="badge badge-primary">Anggota</span>
+									<?php if ($value->level_user == '4') { ?>
+										<span class="badge badge-primary">Daftar Anggota</span>
+									<?php } elseif ($value->level_user == '5') { ?>
+										<span class="badge badge-success">Anggota</span>
+									<?php } elseif ($value->level_user == '6') { ?>
+										<span class="badge badge-warning">Pengunjung</span>
+									<?php } ?>
 								</td>
 								<td>
-									<?php if ($value->level_user === '2') { ?>
+									<?php if ($value->level_user === '4') { ?>
 										<a href="<?= base_url('admin/verifikasi/' . $value->id_user) ?>" class="btn btn-warning btn-sm"><i class="fa fa-check"></i>Verifikasi</a>
-									<?php } elseif ($value->level_user === '3') { ?>
-										<!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_user ?>">
-											<i class="fa fa-print"></i><br>Cetak Kartu Anggota
-										</button> -->
+									<?php } elseif ($value->level_user === '5') { ?>
 										<a href="<?= base_url('admin/detail/' . $value->id_user); ?>" target="_blank"><button class="btn btn-primary btn-sm">
 												<i class="fa fa-print"></i> Cetak Kartu</button></a>
 									<?php } ?>
