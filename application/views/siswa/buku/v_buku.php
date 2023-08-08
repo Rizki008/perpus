@@ -33,6 +33,7 @@
 							<th>Pengarang</th>
 							<th>Penerbit</th>
 							<th>ISBN</th>
+							<th>Stok Buku</th>
 							<th>Status Buku</th>
 							<th>Sampul Buku</th>
 							<th>Setting</th>
@@ -45,6 +46,7 @@
 							<th>Pengarang</th>
 							<th>Penerbit</th>
 							<th>ISBN</th>
+							<th>Stok Buku</th>
 							<th>Status Buku</th>
 							<th>Sampul Buku</th>
 							<th>Setting</th>
@@ -53,30 +55,32 @@
 					<tbody>
 						<?php foreach ($buku as $key => $value) { ?>
 							<tr>
-								<td><?= $value->no_buku ?></td>
+								<td>
+									<a href="<?= base_url('buku/detail/' . $value->id_buku) ?>"><?= $value->no_buku ?></a>
+								</td>
 								<td><?= $value->judul ?></td>
 								<td><?= $value->pengarang ?></td>
 								<td><?= $value->penerbit ?></td>
 								<td><?= $value->isbn ?></td>
+								<td><?= $value->stok ?></td>
 								<td>
-									<?php if ($value->status === '1') { ?>
+									<?php if ($value->status === '1' && $value->stok <= '1') { ?>
 										<span class="badge badge-warning">Buku Dipinjam</span>
+									<?php } elseif ($value->status === '1' && $value->stok >= '1') { ?>
+										<span class="badge badge-success">Buku Diperpus</span>
 									<?php } elseif ($value->status === '0') { ?>
 										<span class="badge badge-success">Buku Diperpus</span>
 									<?php } ?>
 								</td>
-								<td><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" alt="" width="100px"></td>
+								<td><a href="<?= base_url('buku/detail/' . $value->id_buku) ?>"><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" alt="" width="100px"></a></td>
 								<td>
-									<a href="<?= base_url('buku/download/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-download"></i><br>Download</a>
-									<?php if ($this->session->userdata('username') == "") { ?>
-										<button data-toggle="modal" data-target="#baca<?= $value->id_buku ?>" type="button" class="btn btn-primary btn-sm"><i class="fa fa-book"></i>
-											Baca
-										</button>
+									<?php if ($this->session->userdata('level_user') == '4' || $this->session->userdata('level_user') == '5' || $this->session->userdata('level_user') == '6') { ?>
+										<a href="<?= base_url('buku/download/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-download"></i><br>Download</a>
+										<a href="<?= base_url('buku/baca_buku1/' . $value->id_buku) ?>" class="btn btn-primary btn-sm"><i class="fa fa-book"></i><br>Baca</a>
 									<?php } else { ?>
 										<button data-toggle="modal" data-target="#baca<?= $value->id_buku ?>" type="button" class="btn btn-primary btn-sm"><i class="fa fa-book"></i>
 											Baca
 										</button>
-										<!-- <a href="<?= base_url('buku/baca/' . $value->id_buku) ?>" class="btn btn-primary btn-sm"><i class="fa fa-book"></i><br>Baca</a> -->
 									<?php } ?>
 								</td>
 							</tr>
@@ -113,7 +117,9 @@
 								<?php foreach ($buku as $key => $value) { ?>
 									<?php if ($value->status === '0') { ?>
 										<option value="<?= $value->no_buku ?>"><?= $value->judul ?></option>
-									<?php } elseif ($value->status === '1') { ?>
+									<?php } elseif ($value->status === '1' && $value->stok >= '1') { ?>
+										<option value="<?= $value->no_buku ?>"><?= $value->judul ?></option>
+									<?php } elseif ($value->status === '1' && $value->stok <= 1) { ?>
 									<?php } ?>
 								<?php } ?>
 							</select>
@@ -148,17 +154,10 @@
 							echo form_open('buku/baca_buku/' . $bukus->id_buku);
 							?>
 							<input type="hidden" name="id_buku" value="<?= $bukus->id_buku ?>">
-							<?php if ($this->session->userdata('username') == "") { ?>
-								<div class="form-group">
-									<label>Atas Nama</label>
-									<input type="text" name="nama_baca" class="form-control" placeholder="Nama">
-								</div>
-							<?php } else { ?>
-								<div class="form-group">
-									<h5>Apakah Anda Akan Membaca Buku <?= $bukus->judul ?> ?</h5>
-									<input type="hidden" name="id_user" value="<?= $this->session->userdata('id_user') ?>" class="form-control" readonly>
-								</div>
-							<?php } ?>
+							<div class="form-group">
+								<label>Atas Nama</label>
+								<input type="text" name="nama_baca" class="form-control" placeholder="Nama">
+							</div>
 						</div>
 						<div class="modal-footer justify-content-between">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -193,7 +192,7 @@
 						<!-- <div class="row"> -->
 						<div class="form-group">
 							<label>Nama Peminjam Baru</label>
-							<input type="text" name="nama_peminjam" class="form-control" placeholder="Nama Peminjam">
+							<input type="text" name="nama_peminjam" class="form-control" placeholder="Nama Peminjam" required>
 						</div>
 						<hr>
 						<div class="form-group">
@@ -203,7 +202,9 @@
 								<?php foreach ($buku as $key => $value) { ?>
 									<?php if ($value->status === '0') { ?>
 										<option value="<?= $value->no_buku ?>"><?= $value->judul ?></option>
-									<?php } elseif ($value->status === '1') { ?>
+									<?php } elseif ($value->status === '1' && $value->stok >= '1') { ?>
+										<option value="<?= $value->no_buku ?>"><?= $value->judul ?></option>
+									<?php } elseif ($value->status === '1' && $value->stok <= 1) { ?>
 									<?php } ?>
 								<?php } ?>
 							</select>

@@ -76,6 +76,13 @@
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
+									<label for="exampleInputPassword1">Stok Buku</label>
+									<input type="number" name="stok" value="<?= $buku->stok ?>" class=" form-control" id="exampleInputPassword1" placeholder="Stok Buku">
+									<?= form_error('stok', '<small id="emailHelp" class="form-text text-danger">', '</small>'); ?>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
 									<label for="exampleInputPassword1">Sampul Buku</label>
 									<input type="file" name="sampul" value="<?= $buku->sampul ?>" class=" form-control" id="exampleInputPassword1" placeholder="Sampul Buku">
 									<?= form_error('sampul', '<small id="emailHelp" class="form-text text-danger">', '</small>'); ?>

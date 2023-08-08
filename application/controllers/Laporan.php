@@ -9,8 +9,7 @@ class Laporan extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_laporan');
-		// $this->load->model('m_dashboard');
-		// $this->load->model('m_chatting');
+		$this->load->model('m_master');
 	}
 
 	public function index()

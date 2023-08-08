@@ -24,6 +24,7 @@
 							<th>Tanggal Peminjaman</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Waktu Pengembalian</th>
+							<th>Denda Buku</th>
 							<th>Status Buku</th>
 						</tr>
 					</thead>
@@ -34,6 +35,7 @@
 							<th>Tanggal Peminjaman</th>
 							<th>Tanggal Pengembalian</th>
 							<th>Waktu Pengembalian</th>
+							<th>Denda Buku</th>
 							<th>Status Buku</th>
 						</tr>
 					</tfoot>
@@ -45,14 +47,44 @@
 									<td><?= $value->nama ?> <?= $value->nama_peminjam ?></td>
 									<td><?= $value->no_buku ?></td>
 									<td><?= $value->tgl_peminjaman ?></td>
-									<td><?= $value->tgl_pengembalian ?></td>
 									<td>
-										<?php $tgl1 = strtotime($value->tgl_peminjaman);
-										$tgl2 = strtotime($value->tgl_pengembalian);
-										$jarak = $tgl2 - $tgl1;
-										$hari = $jarak / 60 / 60 / 24;
-										echo $hari, ' Hari';
-										?>
+										<?php if ($value->tgl_pengembalian == NULL) { ?>
+											Tanggal Pengembalian Belum Dikonfirmasi
+										<?php } else { ?>
+											<?= $value->tgl_pengembalian ?>
+										<?php } ?>
+									</td>
+									<td>
+										<?php if ($value->tgl_pengembalian == NULL) { ?>
+											Hari Pengembalian Belum Dikonfirmasi
+										<?php } else { ?>
+											<?php $tgl1 = strtotime($value->tgl_peminjaman);
+											$tgl2 = strtotime($value->tgl_pengembalian);
+											$jarak = $tgl2 - $tgl1;
+											$hari = $jarak / 60 / 60 / 24;
+											echo $hari, ' Hari';
+											?>
+										<?php } ?>
+									</td>
+									<td>
+										<?php
+										$datein = date('Y-m-d');
+										$date_bts = $value->tgl_pengembalian;
+
+										if ($date_bts <= $datein) { ?>
+											<?php
+											$awal = date_create($value->tgl_pengembalian);
+											$akhir = date_create(); //tgl sekarang
+											$diff = date_diff($awal, $akhir);
+
+											//selisih waktu
+											$denda = 0;
+											$denda = $diff->days * 1000;
+											echo 'Sisa Pengembalian : ' . $diff->days . ' Hari';
+											//output selisih hari
+											?>
+											<br>Denda : Rp. <?= number_format($denda) ?>
+										<?php } ?>
 									</td>
 									<td><?php if ($value->status === '1') { ?>
 											<span class="badge badge-warning">Dipinjam</span>

@@ -11,7 +11,7 @@
 	</div>
 	<div class="page-content fade-in-up">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="card card-primary">
 					<div class="card-header">
 						<h3 class="card-title">Laporan Peminjaman Buku</h3>
@@ -76,7 +76,7 @@
 				</div>
 				<!-- /.card -->
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="card card-primary">
 					<div class="card-header">
 						<h3 class="card-title">Laporan Baca Buku</h3>

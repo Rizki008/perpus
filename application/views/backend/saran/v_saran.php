@@ -34,7 +34,7 @@
 					<tbody>
 						<?php foreach ($saran_buku as $key => $value) { ?>
 							<tr>
-								<td><?= $value->nama ?></td>
+								<td><?= $value->nama ?> <?= $value->nama_peminjam ?></td>
 								<td><?= $value->judul ?></td>
 								<td><?= $value->saran ?></td>
 							</tr>

@@ -12,6 +12,7 @@ class Home extends CI_Controller
 		parent::__construct();
 		//Load Dependencies
 		$this->load->model('m_buku');
+		$this->load->model('m_master');
 	}
 
 	// List all your items
@@ -29,6 +30,9 @@ class Home extends CI_Controller
 		$data = array(
 			'title' => 'Perpustakaan Web',
 			'buku' => $this->m_buku->buku_pinjam(),
+			'grafik_buku' => $this->m_master->grafik_buku(),
+			'grafik_buku_pinjam' => $this->m_master->grafik_buku_pinjam(),
+			'grafik_buku_baca' => $this->m_master->grafik_buku_baca(),
 			'bukud' => $this->m_buku->bukud(),
 			'isi' => 'siswa/v_siswa'
 		);

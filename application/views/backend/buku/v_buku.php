@@ -25,6 +25,7 @@
 							<th>Pengarang</th>
 							<th>Penerbit</th>
 							<th>ISBN</th>
+							<th>Stok</th>
 							<th>Status Buku</th>
 							<th>Sampul Buku</th>
 							<th>File Buku</th>
@@ -38,6 +39,7 @@
 							<th>Pengarang</th>
 							<th>Penerbit</th>
 							<th>ISBN</th>
+							<th>Stok</th>
 							<th>Status Buku</th>
 							<th>Sampul Buku</th>
 							<th>File Buku</th>
@@ -52,6 +54,7 @@
 								<td><?= $value->pengarang ?></td>
 								<td><?= $value->penerbit ?></td>
 								<td><?= $value->isbn ?></td>
+								<td><?= $value->stok ?></td>
 								<td>
 									<?php if ($value->status === '1') { ?>
 										<span class="badge badge-warning">Buku Dipinjam</span>

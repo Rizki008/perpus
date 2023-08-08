@@ -39,7 +39,7 @@
 						<?php foreach ($kembali as $key => $value) { ?>
 							<tr>
 								<td><?= $value->id_peminjaman ?></td>
-								<td><?= $value->nama ?></td>
+								<td><?= $value->nama ?> <?= $value->nama_peminjam ?></td>
 								<td><?= $value->no_buku ?></td>
 								<td><?= $value->tgl_pengembalian ?></td>
 								<td><?php if ($value->status === '1') { ?>

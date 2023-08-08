@@ -39,7 +39,7 @@
 						<?php foreach ($denda as $key => $value) { ?>
 							<tr>
 								<td><?= $value->id_peminjaman ?></td>
-								<td><?= $value->nama ?></td>
+								<td><?= $value->nama ?> <?= $value->nama_peminjam ?></td>
 								<td><?= $value->no_buku ?></td>
 								<td><?= $value->tgl_pengembalian ?></td>
 								<td>Rp. <?= number_format($value->jml_pembayaran, 0) ?></td>

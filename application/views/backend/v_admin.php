@@ -57,7 +57,7 @@
 							<script>
 								var ctx = document.getElementById('myChart');
 								var myChart = new Chart(ctx, {
-									type: 'bar',
+									type: 'polarArea',
 									data: {
 										labels: <?= json_encode($judul) ?>,
 										datasets: [{
@@ -143,15 +143,15 @@
 											borderWidth: 1
 										}]
 									},
-									options: {
-										scales: {
-											yAxes: [{
-												ticks: {
-													beginAtZero: true
-												}
-											}]
-										}
-									}
+									// options: {
+									// 	scales: {
+									// 		yAxes: [{
+									// 			ticks: {
+									// 				beginAtZero: true
+									// 			}
+									// 		}]
+									// 	}
+									// }
 								});
 							</script>
 						</div>
@@ -163,7 +163,7 @@
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
 							<div>
-								<h3 class="m-0">Grafik Yang Sering Pinjam</h3>
+								<h3 class="m-0">Grafik Pegunjung Teratas</h3>
 							</div>
 						</div>
 						<div>
@@ -177,7 +177,7 @@
 							<script>
 								var ctx = document.getElementById('myChar');
 								var myChart = new Chart(ctx, {
-									type: 'bar',
+									type: 'doughnut',
 									data: {
 										labels: <?= json_encode($nama) ?>,
 										datasets: [{
@@ -263,15 +263,15 @@
 											borderWidth: 1
 										}]
 									},
-									options: {
-										scales: {
-											yAxes: [{
-												ticks: {
-													beginAtZero: true
-												}
-											}]
-										}
-									}
+									// options: {
+									// 	scales: {
+									// 		yAxes: [{
+									// 			ticks: {
+									// 				beginAtZero: true
+									// 			}
+									// 		}]
+									// 	}
+									// }
 								});
 							</script>
 						</div>
@@ -283,7 +283,7 @@
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
 							<div>
-								<h3 class="m-0">Grafik Yang Sering baca</h3>
+								<h3 class="m-0">Grafik Pembaca Teratas</h3>
 							</div>
 						</div>
 						<div>
@@ -297,7 +297,7 @@
 							<script>
 								var ctx = document.getElementById('myCha');
 								var myChart = new Chart(ctx, {
-									type: 'bar',
+									type: 'line',
 									data: {
 										labels: <?= json_encode($nm) ?>,
 										datasets: [{

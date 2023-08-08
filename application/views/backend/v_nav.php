@@ -8,9 +8,7 @@
 			<div class="admin-info">
 				<div class="font-strong"><?= $this->session->userdata('nama'); ?></div>
 				<small>
-					<?php if ($this->session->userdata('level_user') == '1') { ?>
-						Admin
-					<?php } elseif ($this->session->userdata('level_user') == '2') { ?>
+					<?php if ($this->session->userdata('level_user') == '2') { ?>
 						Staff
 					<?php } elseif ($this->session->userdata('level_user') == '3') { ?>
 						Kepala Perpustakaan
@@ -33,19 +31,20 @@
 				</li>
 			<?php } ?>
 			<li>
+				<?php $notif_pinjam = $this->m_master->notif_pinjam() ?>
 				<a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
 					<span class="nav-label">Data Peminjaman</span><i class="fa fa-angle-left arrow"></i></a>
 				<ul class="nav-2-level collapse">
-					<?php if ($this->session->userdata('level_user') === '1' || $this->session->userdata('level_user') === '3') { ?>
+					<?php if ($this->session->userdata('level_user') === '3') { ?>
 						<li>
-							<a href="<?= base_url('master/peminjaman') ?>">Peminjaman Buku</a>
+							<a href="<?= base_url('master/peminjaman') ?>">Peminjaman Buku <span class="bagde badge-warning"><?= $notif_pinjam ?></span></a>
 						</li>
 						<li>
 							<a href="<?= base_url('master/pengembalian') ?>">Pengembalian Buku</a>
 						</li>
 					<?php } elseif ($this->session->userdata('level_user') === '2') { ?>
 						<li>
-							<a href="<?= base_url('master/peminjaman') ?>">Peminjaman Buku</a>
+							<a href="<?= base_url('master/peminjaman') ?>">Peminjaman Buku <span class="bagde badge-warning"><?= $notif_pinjam ?></span></a>
 						</li>
 						<li>
 							<a href="<?= base_url('master/pengembalian') ?>">Pengembalian Buku</a>
@@ -72,13 +71,14 @@
 			<?php } ?>
 			<li class="heading">USER</li>
 			<li>
-				<?php if ($this->session->userdata('level_user') === '1') { ?>
+				<?php $notif = $this->m_master->notif_anggota(); ?>
+				<?php if ($this->session->userdata('level_user') === '2') { ?>
 					<a href="<?= base_url('admin/user') ?>"><i class="sidebar-item-icon fa fa-user-circle-o"></i>
 						<span class="nav-label">User</span>
 					</a>
 				<?php } ?>
 				<a href="<?= base_url('admin/anggota') ?>"><i class="sidebar-item-icon fa fa-user-plus"></i>
-					<span class="nav-label">Data Anggota</span>
+					<span class="nav-label">Data Anggota <span class="badge badge-danger"><?= $notif ?></span></span>
 				</a>
 			</li>
 		</ul>

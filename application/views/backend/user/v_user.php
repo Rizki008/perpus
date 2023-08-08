@@ -13,7 +13,7 @@
 	<div class="page-content fade-in-up">
 		<div class="ibox">
 			<div class="ibox-head">
-				<div class="ibox-title">Data User Admin</div>
+				<div class="ibox-title">Data User</div>
 				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add">
 					<i class="fa fa-plus"></i>Tambah User
 				</button>
@@ -51,13 +51,11 @@
 								<td><?= $value->no_hp ?></td>
 								<td><?= $value->alamat ?></td>
 								<td>
-									<?php if ($value->level_user === '1') { ?>
-										<span class="badge badge-primary">Admin</span>
-									<?php } elseif ($value->level_user === '2') { ?>
-										<span class="badge badge-warning">Staff</span>
+									<?php if ($value->level_user === '2') { ?>
+										<span class="badge badge-primary">Staff</span>
 									<?php } elseif ($value->level_user === '3') { ?>
-										<span class="badge badge-success">Kepala Perpustakaan</span>
-									<?php } ?>
+										<span class="badge badge-success">Kepala Perpus</span>
+									<?php }  ?>
 								</td>
 								<td>
 									<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit<?= $value->id_user ?>">
@@ -103,7 +101,7 @@
 								<label>Level User</label>
 								<select name="level_user" class="form-control">
 									<option>---Pilih Level User---</option>
-									<option value="1">Admin</option>
+									<!-- <option value="1">Admin</option> -->
 									<option value="2">Staff</option>
 									<option value="3">Kepala Perpustakaan</option>
 								</select>
@@ -156,16 +154,14 @@
 									<label>Level User</label>
 									<select name="level_user" class="form-control">
 										<option value="<?= $value->level_user ?>">
-											<?php if ($value->level_user === '1') { ?>
-												Admin
-											<?php } elseif ($value->level_user === '2') { ?>
+											<?php if ($value->level_user === '2') { ?>
 												Staff
 											<?php } elseif ($value->level_user === '3') { ?>
 												Kepala Perpustakaan
 											<?php } ?>
 										</option>
 										<option>---Pilih Level User---</option>
-										<option value="1">Admin</option>
+										<!-- <option value="1">Admin</option> -->
 										<option value="2">Staff</option>
 										<option value="3">Kepala Perpustakaan</option>
 									</select>

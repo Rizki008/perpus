@@ -12,6 +12,7 @@ class Buku extends CI_Controller
 		parent::__construct();
 		//Load Dependencies
 		$this->load->model('m_buku');
+		$this->load->model('m_master');
 	}
 
 	// List all your items
@@ -44,6 +45,9 @@ class Buku extends CI_Controller
 		$this->form_validation->set_rules('isbn', 'ISBN', 'required', array(
 			'required' => '%s Mohon Untuk Diisi!!!',
 		));
+		$this->form_validation->set_rules('stok', 'Stok Buku', 'required', array(
+			'required' => '%s Mohon Untuk Diisi!!!',
+		));
 
 		if ($this->form_validation->run() == TRUE) {
 			$config['upload_path'] = './assets/sampul';
@@ -69,6 +73,7 @@ class Buku extends CI_Controller
 					'pengarang' => $this->input->post('pengarang'),
 					'penerbit' => $this->input->post('penerbit'),
 					'isbn' => $this->input->post('isbn'),
+					'stok' => $this->input->post('stok'),
 					'status' => '0',
 					'sampul' => $upload_data['uploads']['file_name'],
 				);
@@ -101,6 +106,9 @@ class Buku extends CI_Controller
 			'required' => '%s Mohon Untuk Diisi!!!',
 		));
 		$this->form_validation->set_rules('isbn', 'ISBN', 'required', array(
+			'required' => '%s Mohon Untuk Diisi!!!',
+		));
+		$this->form_validation->set_rules('stok', 'Stok Buku', 'required', array(
 			'required' => '%s Mohon Untuk Diisi!!!',
 		));
 
@@ -136,6 +144,7 @@ class Buku extends CI_Controller
 					'pengarang' => $this->input->post('pengarang'),
 					'penerbit' => $this->input->post('penerbit'),
 					'isbn' => $this->input->post('isbn'),
+					'stok' => $this->input->post('stok'),
 					'status' => '0',
 					'sampul' => $upload_data['uploads']['file_name'],
 				);
@@ -150,6 +159,7 @@ class Buku extends CI_Controller
 				'pengarang' => $this->input->post('pengarang'),
 				'penerbit' => $this->input->post('penerbit'),
 				'isbn' => $this->input->post('isbn'),
+				'stok' => $this->input->post('stok'),
 				'status' => '0'
 			);
 			$this->m_buku->update($data);
@@ -243,15 +253,41 @@ class Buku extends CI_Controller
 
 	public function baca_buku($id_buku)
 	{
+		$nama = $this->input->post('nama_baca');
+		$cek = $this->m_master->batas_baca($nama);
+		if ($cek->jml_baca >= '3') {
+			$this->session->set_flashdata('pesan', 'Batas Baca sudah Lebih 3x, Silahkan Untuk Membuat Akun anda');
+			redirect('home');
+		} else {
+			$data = array(
+				'id_buku' => $this->input->post('id_buku'),
+				'nama_baca' => $this->input->post('nama_baca'),
+			);
+			$this->m_buku->bacabuku($data);
+			$this->session->set_flashdata('pesan', 'Silahkan Untuk Membaca');
+			redirect('buku/baca/' . $id_buku);
+		}
+	}
+	public function baca_buku1($id_buku)
+	{
 		$data = array(
-			'id_buku' => $this->input->post('id_buku'),
-			'id_user' => $this->input->post('id_user'),
-			'nama_baca' => $this->input->post('nama_baca'),
+			'id_buku' => $id_buku,
+			'id_user' => $this->session->userdata('id_user'),
 		);
 		$this->m_buku->bacabuku($data);
 		$this->session->set_flashdata('pesan', 'Silahkan Untuk Membaca');
 
 		redirect('buku/baca/' . $id_buku);
+	}
+
+	public function detail($id_buku)
+	{
+		$data = array(
+			'title' => 'Detail Buku',
+			'detail' => $this->m_master->detail($id_buku),
+			'isi' => 'siswa/detail/v_buku'
+		);
+		$this->load->view('siswa/v_wrapper', $data, FALSE);
 	}
 }
 

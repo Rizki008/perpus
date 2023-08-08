@@ -193,6 +193,30 @@ class M_master extends CI_Model
 	{
 		return $this->db->query("SELECT COUNT(peminjaman_buku.id_user) as jml_user, user.nama FROM `peminjaman_buku` LEFT JOIN buku ON buku.no_buku=peminjaman_buku.no_buku LEFT JOIN user ON user.id_user=peminjaman_buku.id_user GROUP BY peminjaman_buku.id_user;")->result();
 	}
+
+	public function notif_anggota()
+	{
+		$this->db->where('level_user', 4);
+		return $this->db->get('user')->num_rows();
+	}
+	public function notif_pinjam()
+	{
+		$this->db->where('status', 1);
+		return $this->db->get('peminjaman_buku')->num_rows();
+	}
+
+	public function batas_baca($nama_baca)
+	{
+		return $this->db->query("SELECT COUNT(nama_baca) as jml_baca, nama_baca FROM `baca` WHERE nama_baca='" . $nama_baca . "'")->row();
+	}
+
+	public function detail($id_buku)
+	{
+		$this->db->select('*');
+		$this->db->from('buku');
+		$this->db->where('id_buku', $id_buku);
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file M_master.php */

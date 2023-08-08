@@ -1,31 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en"> -->
-
-<!-- <head>
-	<title><?= $title ?></title>
-
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="">
-	<meta name="author" content="Phoenixcoded" /> -->
-<!-- Favicon icon -->
-<!-- <link rel="icon" href="<?= base_url() ?>frontend/dist/assets/images/favicon.ico" type="image/x-icon"> -->
-
-<!-- datatable -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css"> -->
-<!-- vendor css -->
-<!-- <link rel="stylesheet" href="<?= base_url() ?>frontend/dist/assets/css/style.css">
-
-
-
-</head> -->
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,4 +16,6 @@
 	<!-- THEME STYLES-->
 	<link href="<?= base_url('backend/dist') ?>/assets/css/main.min.css" rel="stylesheet" />
 	<!-- PAGE LEVEL STYLES-->
+	<script src="<?= base_url() ?>chart/dist/Chart.min.js"></script>
+	<script src="<?= base_url() ?>chart/samples/utils.js"></script>
 </head>

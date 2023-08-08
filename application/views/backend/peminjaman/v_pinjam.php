@@ -48,14 +48,23 @@
 								<td><?= $value->nama ?> <?= $value->nama_peminjam ?></td>
 								<td><?= $value->no_buku ?></td>
 								<td><?= $value->tgl_peminjaman ?></td>
-								<td><?= $value->tgl_pengembalian ?></td>
+								<td><?php if ($value->tgl_pengembalian == NULL) { ?>
+										Tanggal Pengembalian Belum Dikonfirmasi
+									<?php } else { ?>
+										<?= $value->tgl_pengembalian ?>
+									<?php } ?>
+								</td>
 								<td>
-									<?php $tgl1 = strtotime($value->tgl_peminjaman);
-									$tgl2 = strtotime($value->tgl_pengembalian);
-									$jarak = $tgl2 - $tgl1;
-									$hari = $jarak / 60 / 60 / 24;
-									echo $hari, ' Hari';
-									?>
+									<?php if ($value->tgl_pengembalian == NULL) { ?>
+										Hari Pengembalian Belum Dikonfirmasi
+									<?php } else { ?>
+										<?php $tgl1 = strtotime($value->tgl_peminjaman);
+										$tgl2 = strtotime($value->tgl_pengembalian);
+										$jarak = $tgl2 - $tgl1;
+										$hari = $jarak / 60 / 60 / 24;
+										echo $hari, ' Hari';
+										?>
+									<?php } ?>
 								</td>
 								<td>
 									<?php if ($value->status === '1') { ?>
@@ -68,9 +77,14 @@
 								</td>
 
 								<td>
+									<?php if ($value->tgl_pengembalian == NULL) { ?>
+										<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#jam<?= $value->id_peminjaman ?>" href="<?= base_url('master/delete/' . $value->id_peminjaman . '/' . $value->no_buku) ?>">
+											<i class="fa fa-info"></i>Tanggal Pengembalian
+										</button>
+									<?php } ?>
 									<?php if ($value->status === '1') { ?>
-										<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#kembali<?= $value->id_peminjaman ?>" href="<?= base_url('master/delete/' . $value->id_peminjaman . '/' . $value->no_buku) ?>">
-											<i class="fa fa-info"></i><br>Kembali
+										<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#kembali<?= $value->id_peminjaman ?>" href="<?= base_url('master/delete/' . $value->id_peminjaman . '/' . $value->no_buku) ?>">
+											<i class="fa fa-check"></i>Kembali
 										</button>
 									<?php } elseif ($value->status === '2') { ?>
 									<?php } ?>
@@ -196,6 +210,34 @@
 							</div>
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-primary">Pengembalian</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+
+		<!-- Modal Jam Kembali -->
+		<?php foreach ($pinjam as $key => $value) { ?>
+			<div class="modal fade" id="jam<?= $value->id_peminjaman ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Detail Peminjam Buku</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<form action="<?= base_url('master/jam/' . $value->id_peminjaman) ?>" enctype="multipart/form-data" accept-charset="utf-8" method="POST">
+							<div class="modal-body">
+								<div class="form-group">
+									<label>Tanggal Pengembalian</label>
+									<input type="date" name="tgl_pengembalian" class="form-control" required>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="submit" class="btn btn-primary">Update Jam Pengembalian</button>
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 							</div>
 						</form>

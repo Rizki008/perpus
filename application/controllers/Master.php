@@ -117,9 +117,11 @@ class Master extends CI_Controller
 			'id_peminjaman' => $this->input->post('id_peminjaman'),
 			'id_user' => $this->session->userdata('id_user'),
 			'no_buku' => $this->input->post('no_buku'),
+			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
 			'tgl_peminjaman' => date('Y-m-d'),
-			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
-			'status' => '1'
+			// 'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
+			'status' => '1',
+			'jml_pinjam' => '1'
 		);
 		$this->m_master->peminjaman($data);
 
@@ -138,9 +140,11 @@ class Master extends CI_Controller
 			'id_user' => $this->input->post('id_user'),
 			'no_buku' => $this->input->post('no_buku'),
 			'nama_peminjam' => $this->input->post('nama_peminjam'),
+			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
 			'tgl_peminjaman' => date('Y-m-d'),
-			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
-			'status' => '1'
+			// 'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
+			'status' => '1',
+			'jml_pinjam' => '1'
 		);
 		$this->m_master->peminjaman($data);
 
@@ -162,8 +166,10 @@ class Master extends CI_Controller
 		$data = array(
 			'id_peminjaman' => $id_peminjaman,
 			'id_pengembalian' => $this->input->post('id_pengembalian'),
+			'no_buku' => $this->input->post('no_buku'),
 			'tgl_pengembalian' => date('Y-m-d'),
-			'status' => '1'
+			'status' => '1',
+			'jml_kembali' => '1'
 		);
 		$this->m_master->pengembalian($data);
 
@@ -207,6 +213,17 @@ class Master extends CI_Controller
 		$this->m_master->update_saran($data);
 		$this->session->set_flashdata('pesan', 'Pegembalian Berhasil!!!');
 		redirect('master/pengembalian');
+	}
+
+	public function jam($id_peminjaman)
+	{
+		$data = array(
+			'id_peminjaman' => $id_peminjaman,
+			'tgl_pengembalian' => $this->input->post('tgl_pengembalian'),
+		);
+		$this->m_master->update_status_pinjam($id_peminjaman, $data);
+		$this->session->set_flashdata('pesan', 'Tanggal Pengembalian Berhasil Diupdate!!!');
+		redirect('master/peminjaman');
 	}
 }
 
