@@ -49,18 +49,21 @@
 					<div class="ibox-body">
 						<ul class="media-list media-list-divider m-0">
 							<?php foreach ($bukud as $key => $buk) { ?>
-								<li class="media">
-									<a class="media-img" href="<?= base_url('buku/detail/' . $buk->id_buku) ?>">
-										<img src="<?= base_url('assets/sampul/' . $buk->sampul) ?>" width="50px;" />
-									</a>
-									<div class="media-body">
-										<div class="media-heading">
-											<a href="<?= base_url('buku/detail/' . $buk->id_buku) ?>"><?= $buk->judul ?></a>
-											<span class="font-16 float-right"><?= $buk->pengarang ?></span>
+								<?php if ($buk->file == NULL) { ?>
+								<?php } else { ?>
+									<li class="media">
+										<a class="media-img" href="<?= base_url('buku/detail/' . $buk->id_buku) ?>">
+											<img src="<?= base_url('assets/sampul/' . $buk->sampul) ?>" width="50px;" />
+										</a>
+										<div class="media-body">
+											<div class="media-heading">
+												<a href="<?= base_url('buku/detail/' . $buk->id_buku) ?>"><?= $buk->judul ?></a>
+												<span class="font-16 float-right"><?= $buk->pengarang ?></span>
+											</div>
+											<div class="font-13"><?= $buk->file ?></div>
 										</div>
-										<div class="font-13"><?= $buk->file ?></div>
-									</div>
-								</li>
+									</li>
+								<?php } ?>
 							<?php } ?>
 						</ul>
 					</div>

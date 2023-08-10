@@ -110,13 +110,33 @@ class Master extends CI_Controller
 		}
 	}
 
-	// Add a new item
-	public function pinjam()
+	public function pinjam_baru($no_buku)
 	{
 		$data = array(
-			'id_peminjaman' => $this->input->post('id_peminjaman'),
+			'no_buku' => $no_buku,
+			'id_peminjaman' => strtoupper('id_peminjaman'),
 			'id_user' => $this->session->userdata('id_user'),
-			'no_buku' => $this->input->post('no_buku'),
+			'tgl_peminjaman' => date('Y-m-d'),
+			'status' => '1',
+			'jml_pinjam' => '1'
+		);
+		$this->m_master->peminjaman($data);
+
+		$status = array(
+			'status' => '1',
+		);
+		$this->m_master->update_status_buku($data['no_buku'], $status);
+		$this->session->set_flashdata('pesan', 'Peminjaman Berhasil!!!');
+		redirect('buku/buku');
+	}
+	// Add a new item
+
+	public function pinjam_langsung_baru($no_buku)
+	{
+
+		$data = array(
+			'no_buku' => $no_buku,
+			'nama_peminjam' => $this->input->post('nama_peminjam'),
 			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
 			'tgl_peminjaman' => date('Y-m-d'),
 			// 'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
@@ -124,7 +144,6 @@ class Master extends CI_Controller
 			'jml_pinjam' => '1'
 		);
 		$this->m_master->peminjaman($data);
-
 		$status = array(
 			'status' => '1',
 		);
