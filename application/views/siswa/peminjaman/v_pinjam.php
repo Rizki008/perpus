@@ -48,23 +48,15 @@
 									<td><?= $value->no_buku ?></td>
 									<td><?= $value->tgl_peminjaman ?></td>
 									<td>
-										<?php if ($value->tgl_pengembalian == NULL) { ?>
-											Tanggal Pengembalian Belum Dikonfirmasi
-										<?php } else { ?>
-											<?= $value->tgl_pengembalian ?>
-										<?php } ?>
+										<?= $value->tgl_pengembalian ?>
 									</td>
 									<td>
-										<?php if ($value->tgl_pengembalian == NULL) { ?>
-											Hari Pengembalian Belum Dikonfirmasi
-										<?php } else { ?>
-											<?php $tgl1 = strtotime($value->tgl_peminjaman);
-											$tgl2 = strtotime($value->tgl_pengembalian);
-											$jarak = $tgl2 - $tgl1;
-											$hari = $jarak / 60 / 60 / 24;
-											echo $hari, ' Hari';
-											?>
-										<?php } ?>
+										<?php $tgl1 = strtotime($value->tgl_peminjaman);
+										$tgl2 = strtotime($value->tgl_pengembalian);
+										$jarak = $tgl2 - $tgl1;
+										$hari = $jarak / 60 / 60 / 24;
+										echo $hari, ' Hari';
+										?>
 									</td>
 									<td>
 										<?php

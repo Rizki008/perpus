@@ -196,7 +196,7 @@
 							echo form_open('master/pinjam_langsung_baru/' . $pinjam->no_buku);
 							?>
 							<?php $id_peminjaman = date('Ymd') . strtoupper(random_string('alnum', 8)); ?>
-							<input name="id_peminjaman" value="<?= $id_peminjaman ?>" type="text">
+							<input name="id_peminjaman" value="<?= $id_peminjaman ?>" type="hidden">
 							<!-- <div class="row"> -->
 							<div class="form-group">
 								<label>Nama Peminjam</label>

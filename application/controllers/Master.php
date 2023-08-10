@@ -117,6 +117,7 @@ class Master extends CI_Controller
 			'id_peminjaman' => strtoupper('id_peminjaman'),
 			'id_user' => $this->session->userdata('id_user'),
 			'tgl_peminjaman' => date('Y-m-d'),
+			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
 			'status' => '1',
 			'jml_pinjam' => '1'
 		);
@@ -139,7 +140,7 @@ class Master extends CI_Controller
 			'nama_peminjam' => $this->input->post('nama_peminjam'),
 			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
 			'tgl_peminjaman' => date('Y-m-d'),
-			// 'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
+			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
 			'status' => '1',
 			'jml_pinjam' => '1'
 		);
@@ -161,7 +162,7 @@ class Master extends CI_Controller
 			'nama_peminjam' => $this->input->post('nama_peminjam'),
 			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
 			'tgl_peminjaman' => date('Y-m-d'),
-			// 'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
+			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
 			'status' => '1',
 			'jml_pinjam' => '1'
 		);
