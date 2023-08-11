@@ -26,6 +26,8 @@ class Admin extends CI_Controller
 			'total_kembali' => $this->m_master->total_kembali(),
 			'grafik_buku' => $this->m_master->grafik_buku(),
 			'grafik_buku_pinjam' => $this->m_master->grafik_buku_pinjam(),
+			'grafik_buku_baca_tahun' => $this->m_master->grafik_buku_baca_tahun(),
+			'grafik_buku_baca_bulan' => $this->m_master->grafik_buku_baca_bulan(),
 			'grafik_buku_baca' => $this->m_master->grafik_buku_baca(),
 			'isi' => 'backend/v_admin'
 		);

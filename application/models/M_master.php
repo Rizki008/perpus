@@ -193,6 +193,18 @@ class M_master extends CI_Model
 	{
 		return $this->db->query("SELECT COUNT(peminjaman_buku.id_user) as jml_user, user.nama FROM `peminjaman_buku` LEFT JOIN buku ON buku.no_buku=peminjaman_buku.no_buku LEFT JOIN user ON user.id_user=peminjaman_buku.id_user GROUP BY peminjaman_buku.id_user;")->result();
 	}
+	public function grafik_buku_baca_tahun()
+	{
+		return $this->db->query("SELECT COUNT(nama_baca) as jumlah_baca, YEAR(tgl_baca) AS tanggal FROM `baca` GROUP BY tanggal")->result();
+	}
+	public function grafik_buku_baca_bulan()
+	{
+		return $this->db->query("SELECT COUNT(nama_baca) as jumlah_baca_bulan, DATE_FORMAT(tgl_baca,'%M') AS bulan FROM baca GROUP BY bulan")->result();
+	}
+	// public function grafik_buku_baca_bulan()
+	// {
+	// 	return $this->db->query("SELECT DATE_FORMAT(tgl_baca,'%a, %Y %M %e %H:%i:%s') AS bulan FROM baca GROUP BY tanggal")->result();
+	// }
 
 	public function notif_anggota()
 	{
