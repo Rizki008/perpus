@@ -35,6 +35,8 @@ class Home extends CI_Controller
 			'grafik_buku_baca_tahun' => $this->m_master->grafik_buku_baca_tahun(),
 			'grafik_buku_baca_bulan' => $this->m_master->grafik_buku_baca_bulan(),
 			'grafik_buku_baca' => $this->m_master->grafik_buku_baca(),
+			'grafik_buku_baca_usia' => $this->m_master->grafik_buku_baca_usia(),
+			'grafik_buku_baca_jk' => $this->m_master->grafik_buku_baca_jk(),
 			'bukud' => $this->m_buku->bukud(),
 			'log_baca_hari' => $this->m_master->log_baca_hari(),
 			'log_baca_bulan' => $this->m_master->log_baca_bulan(),

@@ -205,6 +205,14 @@ class M_master extends CI_Model
 	// {
 	// 	return $this->db->query("SELECT DATE_FORMAT(tgl_baca,'%a, %Y %M %e %H:%i:%s') AS bulan FROM baca GROUP BY tanggal")->result();
 	// }
+	public function grafik_buku_baca_usia()
+	{
+		return $this->db->query("SELECT COUNT(peminjaman_buku.id_user) as jumlah_pinjaman, (YEAR(CURDATE()) - YEAR(user.usia)) AS umur FROM `peminjaman_buku` LEFT JOIN user ON user.id_user=peminjaman_buku.id_user GROUP BY umur;")->result();
+	}
+	public function grafik_buku_baca_jk()
+	{
+		return $this->db->query("SELECT COUNT(peminjaman_buku.id_user) as jumlah_jenis_pinjam, jenis_kelamin AS jeniskelamin FROM `peminjaman_buku` LEFT JOIN user ON user.id_user=peminjaman_buku.id_user GROUP BY jeniskelamin;")->result();
+	}
 
 	public function notif_anggota()
 	{
