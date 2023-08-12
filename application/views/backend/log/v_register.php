@@ -65,7 +65,7 @@
 			<div class="form-group">
 				<div class="input-group-icon right">
 					<div class="input-icon"><i class="fa fa-birthday-cake"></i></div>
-					<input class="form-control" type="datetime-local" name="usia" value="<?= set_value('usia') ?>" placeholder="Tanggal Lahir" autocomplete="off">
+					<input class="form-control" type="date" name="usia" value="<?= set_value('usia') ?>" placeholder="Tanggal Lahir" autocomplete="off">
 				</div>
 			</div>
 			<div class="form-group">
