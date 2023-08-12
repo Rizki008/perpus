@@ -82,6 +82,12 @@ class Admin extends CI_Controller
 			'min_length' => '%s Minimal 11',
 			'max_length' => '%s Maksimal 13',
 		));
+		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', array(
+			'required' => '%s Mohon untuk diisi!!!',
+		));
+		$this->form_validation->set_rules('usia', 'Tanggal Lahir', 'required', array(
+			'required' => '%s Mohon untuk diisi!!!',
+		));
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 		$this->form_validation->set_rules('level_user', 'Status Anggota / Siswa', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 
@@ -107,6 +113,8 @@ class Admin extends CI_Controller
 					'username' => $this->input->post('username'),
 					'password' => $this->input->post('password'),
 					'no_hp' => $this->input->post('no_hp'),
+					'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+					'usia' => $this->input->post('usia'),
 					'alamat' => $this->input->post('alamat'),
 					'level_user' => $this->input->post('level_user'),
 					'foto' => $upload_data['uploads']['file_name'],
@@ -120,6 +128,8 @@ class Admin extends CI_Controller
 				'username' => $this->input->post('username'),
 				'password' => $this->input->post('password'),
 				'no_hp' => $this->input->post('no_hp'),
+				'usia' => $this->input->post('usia'),
+				'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 				'alamat' => $this->input->post('alamat'),
 				'level_user' => $this->input->post('level_user'),
 			);

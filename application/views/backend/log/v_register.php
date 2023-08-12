@@ -54,6 +54,22 @@
 			</div>
 			<div class="form-group">
 				<div class="input-group-icon right">
+					<div class="input-icon"><i class="fa fa-venus-mars"></i></div>
+					<select name="jenis_kelamin" class="form-control" id="">
+						<option>---JENIS KELAMIN---</option>
+						<option value="laki-laki">Laki-Laki</option>
+						<option value="perempuan">Perempuan</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group-icon right">
+					<div class="input-icon"><i class="fa fa-birthday-cake"></i></div>
+					<input class="form-control" type="datetime-local" name="usia" value="<?= set_value('usia') ?>" placeholder="Tanggal Lahir" autocomplete="off">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group-icon right">
 					<div class="input-icon"><i class="fa fa-envelope"></i></div>
 					<input class="form-control" type="text" name="username" value="<?= set_value('username') ?>" placeholder="Username" autocomplete="off">
 				</div>
