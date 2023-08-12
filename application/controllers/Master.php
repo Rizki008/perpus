@@ -116,7 +116,8 @@ class Master extends CI_Controller
 			'no_buku' => $no_buku,
 			'id_peminjaman' => strtoupper('id_peminjaman'),
 			'id_user' => $this->session->userdata('id_user'),
-			'tgl_peminjaman' => date('Y-m-d'),
+			'nama_peminjam' => $this->session->userdata('nama'),
+			'tgl_peminjaman' => date('Y-m-d H:i:s'),
 			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
 			'status' => '1',
 			'jml_pinjam' => '1'
@@ -139,7 +140,7 @@ class Master extends CI_Controller
 			'no_buku' => $no_buku,
 			'nama_peminjam' => $this->input->post('nama_peminjam'),
 			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
-			'tgl_peminjaman' => date('Y-m-d'),
+			'tgl_peminjaman' => date('Y-m-d H:i:s'),
 			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
 			'status' => '1',
 			'jml_pinjam' => '1'
@@ -161,7 +162,7 @@ class Master extends CI_Controller
 			'no_buku' => $this->input->post('no_buku'),
 			'nama_peminjam' => $this->input->post('nama_peminjam'),
 			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
-			'tgl_peminjaman' => date('Y-m-d'),
+			'tgl_peminjaman' => date('Y-m-d H:i:s'),
 			'tgl_pengembalian' => date('Y-m-d', strtotime('+7 day')),
 			'status' => '1',
 			'jml_pinjam' => '1'
@@ -187,7 +188,7 @@ class Master extends CI_Controller
 			'id_peminjaman' => $id_peminjaman,
 			'id_pengembalian' => $this->input->post('id_pengembalian'),
 			'no_buku' => $this->input->post('no_buku'),
-			'tgl_pengembalian' => date('Y-m-d'),
+			'tgl_pengembalian' => date('Y-m-d H:i:s'),
 			'status' => '1',
 			'jml_kembali' => '1'
 		);

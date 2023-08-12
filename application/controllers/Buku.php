@@ -273,6 +273,7 @@ class Buku extends CI_Controller
 		$data = array(
 			'id_buku' => $id_buku,
 			'id_user' => $this->session->userdata('id_user'),
+			'nama_baca' => $this->session->userdata('nama'),
 		);
 		$this->m_buku->bacabuku($data);
 		$this->session->set_flashdata('pesan', 'Silahkan Untuk Membaca');

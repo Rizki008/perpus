@@ -229,6 +229,46 @@ class M_master extends CI_Model
 		$this->db->where('id_buku', $id_buku);
 		return $this->db->get()->result();
 	}
+
+	public function log_baca_bulan()
+	{
+		return $this->db->query("SELECT COUNT(nama_baca) as jumlah_baca_bulan,MONTH(tgl_baca) AS tahun FROM baca WHERE (tgl_baca > CURDATE());")->result();
+	}
+	public function log_baca_tahun()
+	{
+		return $this->db->query("SELECT COUNT(nama_baca) as jumlah_baca_tahun,YEAR(tgl_baca) AS bulan FROM baca WHERE (tgl_baca > CURDATE());")->result();
+	}
+	public function log_baca_hari()
+	{
+		return $this->db->query("SELECT COUNT(nama_baca) as jumlah_baca_hari,DAY(tgl_baca) AS hari FROM baca WHERE (tgl_baca > CURDATE());")->result();
+	}
+
+
+	public function log_pinjam_tahun()
+	{
+		return $this->db->query("SELECT COUNT(nama_peminjam) as jumlah_pinjam_tahun,YEAR(tgl_peminjaman) AS tahun FROM peminjaman_buku WHERE (tgl_peminjaman > CURDATE());")->result();
+	}
+	public function log_pinjam_bulan()
+	{
+		return $this->db->query("SELECT COUNT(nama_peminjam) as jumlah_pinjam__bulan,MONTH(tgl_peminjaman) AS bulan FROM peminjaman_buku WHERE (tgl_peminjaman > CURDATE());")->result();
+	}
+	public function log_pinjam_hari()
+	{
+		return $this->db->query("SELECT COUNT(nama_peminjam) as jumlah_pinjam_hari,DAY(tgl_peminjaman) AS hari FROM peminjaman_buku WHERE (tgl_peminjaman > CURDATE());")->result();
+	}
+
+	public function log_pengembalian_tahun()
+	{
+		return $this->db->query("SELECT COUNT(no_buku) as jumlah_kembali_tahun,YEAR(tgl_pengembalian) AS tahun FROM pengembalian_buku WHERE (tgl_pengembalian > CURDATE());")->result();
+	}
+	public function log_pengembalian_bulan()
+	{
+		return $this->db->query("SELECT COUNT(no_buku) as jumlah_kembali_bulan,MONTH(tgl_pengembalian) AS bulan FROM pengembalian_buku WHERE (tgl_pengembalian > CURDATE());")->result();
+	}
+	public function log_pengembalian_hari()
+	{
+		return $this->db->query("SELECT COUNT(no_buku) as jumlah_kembali_hari,DAY(tgl_pengembalian) AS hari FROM pengembalian_buku WHERE (tgl_pengembalian > CURDATE());")->result();
+	}
 }
 
 /* End of file M_master.php */

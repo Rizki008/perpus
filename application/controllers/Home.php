@@ -32,8 +32,19 @@ class Home extends CI_Controller
 			'buku' => $this->m_buku->buku_pinjam(),
 			'grafik_buku' => $this->m_master->grafik_buku(),
 			'grafik_buku_pinjam' => $this->m_master->grafik_buku_pinjam(),
+			'grafik_buku_baca_tahun' => $this->m_master->grafik_buku_baca_tahun(),
+			'grafik_buku_baca_bulan' => $this->m_master->grafik_buku_baca_bulan(),
 			'grafik_buku_baca' => $this->m_master->grafik_buku_baca(),
 			'bukud' => $this->m_buku->bukud(),
+			'log_baca_hari' => $this->m_master->log_baca_hari(),
+			'log_baca_bulan' => $this->m_master->log_baca_bulan(),
+			'log_baca_tahun' => $this->m_master->log_baca_tahun(),
+			'log_pinjam_hari' => $this->m_master->log_pinjam_hari(),
+			'log_pinjam_bulan' => $this->m_master->log_pinjam_bulan(),
+			'log_pinjam_tahun' => $this->m_master->log_pinjam_tahun(),
+			'log_pengembalian_hari' => $this->m_master->log_pengembalian_hari(),
+			'log_pengembalian_bulan' => $this->m_master->log_pengembalian_bulan(),
+			'log_pengembalian_tahun' => $this->m_master->log_pengembalian_tahun(),
 			'isi' => 'siswa/v_siswa'
 		);
 		$this->load->view('siswa/v_wrapper', $data, FALSE);

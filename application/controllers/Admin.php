@@ -29,6 +29,15 @@ class Admin extends CI_Controller
 			'grafik_buku_baca_tahun' => $this->m_master->grafik_buku_baca_tahun(),
 			'grafik_buku_baca_bulan' => $this->m_master->grafik_buku_baca_bulan(),
 			'grafik_buku_baca' => $this->m_master->grafik_buku_baca(),
+			'log_baca_hari' => $this->m_master->log_baca_hari(),
+			'log_baca_bulan' => $this->m_master->log_baca_bulan(),
+			'log_baca_tahun' => $this->m_master->log_baca_tahun(),
+			'log_pinjam_hari' => $this->m_master->log_pinjam_hari(),
+			'log_pinjam_bulan' => $this->m_master->log_pinjam_bulan(),
+			'log_pinjam_tahun' => $this->m_master->log_pinjam_tahun(),
+			'log_pengembalian_hari' => $this->m_master->log_pengembalian_hari(),
+			'log_pengembalian_bulan' => $this->m_master->log_pengembalian_bulan(),
+			'log_pengembalian_tahun' => $this->m_master->log_pengembalian_tahun(),
 			'isi' => 'backend/v_admin'
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);

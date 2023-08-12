@@ -38,7 +38,76 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-4">
+				<div class="ibox">
+					<div class="ibox-head">
+						<div class="ibox-title">Log Baca</div>
+					</div>
+					<?php
+					foreach ($log_baca_hari as $key => $value) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_baca_bulan as $key => $bulan_baca) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_baca_tahun as $key => $tahun_baca) { ?>
+					<?php } ?>
+					<div class="ibox-body">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari Ini : <?= $value->jumlah_baca_hari ?></div>
+								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan Ini : <?= $bulan_baca->jumlah_baca_bulan ?></div>
+								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun Ini : <?= $tahun_baca->jumlah_baca_tahun ?></div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="ibox-head">
+						<div class="ibox-title">Log Peminjaman</div>
+					</div>
+					<?php
+					foreach ($log_pinjam_hari as $key => $hari_pinjam) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pinjam_bulan as $key => $bulan_pinjam) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pinjam_tahun as $key => $tahun_pinjam) { ?>
+					<?php } ?>
+					<div class="ibox-body">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari ini : <?= $hari_pinjam->jumlah_pinjam_hari ?></div>
+								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan ini : <?= $bulan_pinjam->jumlah_pinjam__bulan ?></div>
+								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun ini : <?= $tahun_pinjam->jumlah_pinjam_tahun ?></div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="ibox-head">
+						<div class="ibox-title">Log Pengembalian</div>
+					</div>
+					<?php
+					foreach ($log_pengembalian_hari as $key => $hari_kembali) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pengembalian_bulan as $key => $bulan_kembali) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pengembalian_tahun as $key => $tahun_kembali) { ?>
+					<?php } ?>
+					<div class="ibox-body">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari ini : <?= $hari_kembali->jumlah_kembali_hari ?></div>
+								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan ini : <?= $bulan_kembali->jumlah_kembali_bulan ?></div>
+								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun ini : <?= $tahun_kembali->jumlah_kembali_tahun ?></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-8">
 				<div class="ibox">
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
@@ -278,7 +347,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-12">
+			<div class="col-lg-6">
 				<div class="ibox">
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
