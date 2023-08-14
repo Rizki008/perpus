@@ -58,11 +58,16 @@
 									<?php if ($value->tgl_pengembalian == NULL) { ?>
 										Hari Pengembalian Belum Dikonfirmasi
 									<?php } else { ?>
-										<?php $tgl1 = strtotime($value->tgl_peminjaman);
-										$tgl2 = strtotime($value->tgl_pengembalian);
-										$jarak = $tgl2 - $tgl1;
-										$hari = $jarak / 60 / 60 / 24;
-										echo $hari, ' Hari';
+										<?php
+										$tgl1 = new DateTime($value->tgl_peminjaman);
+										$tgl2 = new DateTime($value->tgl_pengembalian);
+										$jarak = $tgl2->diff($tgl1)->days + 1;
+										echo $jarak, ' Hari';
+										// $tgl1 = strtotime($value->tgl_peminjaman);
+										// $tgl2 = strtotime($value->tgl_pengembalian);
+										// $jarak = $tgl2 - $tgl1;
+										// $hari = $jarak / 60 / 60 / 24;
+										// echo $hari, ' Hari';
 										?>
 									<?php } ?>
 								</td>
