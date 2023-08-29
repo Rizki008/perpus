@@ -132,7 +132,7 @@
 						<table class="table table-striped table-hover">
 							<thead>
 								<tr>
-									<th>No Buku</th>
+									<th>Sampul Buku</th>
 									<th>Judul</th>
 									<th>Pengarang</th>
 									<th>Status</th>
@@ -177,7 +177,10 @@
 												<a href="<?= base_url('buku/detail/' . $buk->id_buku) ?>"><?= $buk->judul ?></a>
 												<span class="font-16 float-right"><?= $buk->pengarang ?></span>
 											</div>
-											<div class="font-13"><?= $buk->file ?></div>
+											<div class="font-13">
+												<img src="<?= base_url('assets/buku/PDF_file_icon.svg.png') ?>" alt="" width="20px"><?= $buk->file ?>
+												<!-- <?= $buk->file ?> -->
+											</div>
 										</div>
 									</li>
 								<?php } ?>

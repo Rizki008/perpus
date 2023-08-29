@@ -63,9 +63,13 @@
 									<?php } ?>
 								</td>
 								<td><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" alt="" width="100px"></td>
-								<td><?= $value->file ?></td>
+								<td><?php if ($value->file == NULL) { ?>
+										<span class="badge badge-warning">Belum Upload File</span>
+									<?php } else { ?>
+										<img src="<?= base_url('assets/buku/PDF_file_icon.svg.png') ?>" alt="" width="100px"><?= $value->file ?>
+									<?php } ?>
+								</td>
 								<td>
-									<button class="btn btn-info m-r-5 m-b-5" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top</button>
 									<a href="<?= base_url('buku/edit/' . $value->id_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 									<a href="<?= base_url('buku/delete/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 									<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add<?= $value->id_buku ?>">
