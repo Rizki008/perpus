@@ -2,6 +2,123 @@
 	<!-- START PAGE CONTENT-->
 	<div class="page-content fade-in-up">
 		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="ibox bg-success color-white widget-stat">
+					<div class="ibox-body">
+						<h2 class="m-b-5 font-strong"><?= $total_baca ?></h2>
+						<div class="m-b-5">TOTAL PEMBACA</div><i class="ti-eye widget-stat-icon"></i>
+						<div><i class="fa fa-level-up m-r-5"></i><small><?= $total_baca / 100 ?>%</small></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="ibox bg-info color-white widget-stat">
+					<div class="ibox-body">
+						<h2 class="m-b-5 font-strong"><?= $total_pinjam ?></h2>
+						<div class="m-b-5">TOTAL PEMINJAM</div> <i class="ti-bookmark-alt widget-stat-icon"></i>
+						<div><i class="fa fa-level-up m-r-5"></i><small><?= $total_pinjam / 100 ?>%</small></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="ibox bg-warning color-white widget-stat">
+					<div class="ibox-body">
+						<h2 class="m-b-5 font-strong"><?= $total_buku ?></h2>
+						<div class="m-b-5">TOTAL BUKU FAVORIT</div><i class="fa fa-book widget-stat-icon"></i>
+						<div><i class="fa fa-level-up m-r-5"></i><small><?= $total_buku / 100 ?>%</small></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="ibox bg-danger color-white widget-stat">
+					<div class="ibox-body">
+						<h2 class="m-b-5 font-strong"><?= $total_anggota ?></h2>
+						<div class="m-b-5">TOTAL ANGGOTA</div><i class="ti-user widget-stat-icon"></i>
+						<div><i class="fa fa-level-up m-r-5"></i><small><?= $total_anggota / 100 ?>%</small></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="ibox">
+					<div class="ibox-head">
+						<div class="ibox-title">Log Baca</div>
+					</div>
+					<?php
+					foreach ($log_baca_hari as $key => $value) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_baca_bulan as $key => $bulan_baca) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_baca_tahun as $key => $tahun_baca) { ?>
+					<?php } ?>
+					<div class="ibox-body">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari Ini : <?= $value->jumlah_baca_hari ?></div>
+								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan Ini : <?= $bulan_baca->jumlah_baca_bulan ?></div>
+								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun Ini : <?= $tahun_baca->jumlah_baca_tahun ?></div>
+							</div>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="ibox">
+					<div class="ibox-head">
+						<div class="ibox-title">Log Peminjaman</div>
+					</div>
+					<?php
+					foreach ($log_pinjam_hari as $key => $hari_pinjam) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pinjam_bulan as $key => $bulan_pinjam) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pinjam_tahun as $key => $tahun_pinjam) { ?>
+					<?php } ?>
+					<div class="ibox-body">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari ini : <?= $hari_pinjam->jumlah_pinjam_hari ?></div>
+								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan ini : <?= $bulan_pinjam->jumlah_pinjam__bulan ?></div>
+								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun ini : <?= $tahun_pinjam->jumlah_pinjam_tahun ?></div>
+							</div>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="ibox">
+					<div class="ibox-head">
+						<div class="ibox-title">Log Pengembalian</div>
+					</div>
+					<?php
+					foreach ($log_pengembalian_hari as $key => $hari_kembali) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pengembalian_bulan as $key => $bulan_kembali) { ?>
+					<?php } ?>
+					<?php
+					foreach ($log_pengembalian_tahun as $key => $tahun_kembali) { ?>
+					<?php } ?>
+					<div class="ibox-body">
+						<div class="row align-items-center">
+							<div class="col-md-6">
+								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari ini : <?= $hari_kembali->jumlah_kembali_hari ?></div>
+								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan ini : <?= $bulan_kembali->jumlah_kembali_bulan ?></div>
+								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun ini : <?= $tahun_kembali->jumlah_kembali_tahun ?></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-lg-8">
 				<div class="ibox">
 					<div class="ibox-head">
@@ -26,7 +143,7 @@
 								<?php foreach ($buku as $key => $value) { ?>
 									<tr>
 										<td>
-											<a href="#"><?= $value->no_buku ?></a>
+											<a href="#"><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" width="100px" alt=""></a>
 										</td>
 										<td><?= $value->judul ?></td>
 										<td><?= $value->pengarang ?></td>
@@ -75,75 +192,6 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-4">
-				<div class="ibox">
-					<div class="ibox-head">
-						<div class="ibox-title">Log Baca</div>
-					</div>
-					<?php
-					foreach ($log_baca_hari as $key => $value) { ?>
-					<?php } ?>
-					<?php
-					foreach ($log_baca_bulan as $key => $bulan_baca) { ?>
-					<?php } ?>
-					<?php
-					foreach ($log_baca_tahun as $key => $tahun_baca) { ?>
-					<?php } ?>
-					<div class="ibox-body">
-						<div class="row align-items-center">
-							<div class="col-md-6">
-								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari Ini : <?= $value->jumlah_baca_hari ?></div>
-								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan Ini : <?= $bulan_baca->jumlah_baca_bulan ?></div>
-								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun Ini : <?= $tahun_baca->jumlah_baca_tahun ?></div>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="ibox-head">
-						<div class="ibox-title">Log Peminjaman</div>
-					</div>
-					<?php
-					foreach ($log_pinjam_hari as $key => $hari_pinjam) { ?>
-					<?php } ?>
-					<?php
-					foreach ($log_pinjam_bulan as $key => $bulan_pinjam) { ?>
-					<?php } ?>
-					<?php
-					foreach ($log_pinjam_tahun as $key => $tahun_pinjam) { ?>
-					<?php } ?>
-					<div class="ibox-body">
-						<div class="row align-items-center">
-							<div class="col-md-6">
-								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari ini : <?= $hari_pinjam->jumlah_pinjam_hari ?></div>
-								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan ini : <?= $bulan_pinjam->jumlah_pinjam__bulan ?></div>
-								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun ini : <?= $tahun_pinjam->jumlah_pinjam_tahun ?></div>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="ibox-head">
-						<div class="ibox-title">Log Pengembalian</div>
-					</div>
-					<?php
-					foreach ($log_pengembalian_hari as $key => $hari_kembali) { ?>
-					<?php } ?>
-					<?php
-					foreach ($log_pengembalian_bulan as $key => $bulan_kembali) { ?>
-					<?php } ?>
-					<?php
-					foreach ($log_pengembalian_tahun as $key => $tahun_kembali) { ?>
-					<?php } ?>
-					<div class="ibox-body">
-						<div class="row align-items-center">
-							<div class="col-md-6">
-								<div class="m-b-20 text-success"><i class="fa fa-circle-o m-r-10"></i>Hari ini : <?= $hari_kembali->jumlah_kembali_hari ?></div>
-								<div class="m-b-20 text-info"><i class="fa fa-circle-o m-r-10"></i>Bulan ini : <?= $bulan_kembali->jumlah_kembali_bulan ?></div>
-								<div class="m-b-20 text-warning"><i class="fa fa-circle-o m-r-10"></i>Tahun ini : <?= $tahun_kembali->jumlah_kembali_tahun ?></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-8">
 				<div class="ibox">
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
@@ -263,7 +311,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6">
+			<div class="col-lg-4">
 				<div class="ibox">
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
@@ -377,6 +425,119 @@
 									// 		}]
 									// 	}
 									// }
+								});
+							</script>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="ibox">
+					<div class="ibox-body">
+						<div class="flexbox mb-4">
+							<div>
+								<h3 class="m-0">Grafik Pembaca Perbulan</h3>
+							</div>
+						</div>
+						<div>
+							<?php
+							foreach ($grafik_buku_baca_bulan as $key => $grafik) {
+								$jumlah_baca_bulan[] = $grafik->jumlah_baca_bulan;
+								$bulan[] = $grafik->bulan;
+							}
+							?>
+							<canvas id="susu" style="height:260px;"></canvas>
+							<script>
+								var ctx = document.getElementById('susu');
+								var myChart = new Chart(ctx, {
+									type: 'pie',
+									data: {
+										labels: <?= json_encode($bulan) ?>,
+										datasets: [{
+											label: 'Grafik Baca Perbulan',
+											data: <?= json_encode($jumlah_baca_bulan) ?>,
+											backgroundColor: [
+												'rgba(255, 159, 64, 0.80)',
+												'rgba(201, 76, 76, 0.3)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(0, 140, 162, 1)',
+												'rgba(158, 109, 8, 1)',
+												'rgba(201, 76, 76, 0.8)',
+												'rgba(0, 129, 212, 1)',
+												'rgba(201, 77, 201, 1)',
+												'rgba(255, 207, 207, 1)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(128, 98, 98, 1)',
+												'rgba(0, 0, 0, 1)',
+												'rgba(128, 128, 128, 1)',
+												'rgba(255, 99, 132, 0.80)',
+												'rgba(54, 162, 235, 0.80)',
+												'rgba(255, 206, 86, 0.80)',
+												'rgba(75, 192, 192, 0.80)',
+												'rgba(153, 102, 255, 0.80)',
+												'rgba(255, 159, 64, 0.80)',
+												'rgba(201, 76, 76, 0.3)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(0, 140, 162, 1)',
+												'rgba(158, 109, 8, 1)',
+												'rgba(201, 76, 76, 0.8)',
+												'rgba(0, 129, 212, 1)',
+												'rgba(201, 77, 201, 1)',
+												'rgba(255, 207, 207, 1)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(128, 98, 98, 1)',
+												'rgba(0, 0, 0, 1)',
+												'rgba(128, 128, 128, 1)',
+												'rgba(255, 99, 132, 0.80)',
+												'rgba(54, 162, 235, 0.80)',
+												'rgba(255, 206, 86, 0.80)',
+												'rgba(75, 192, 192, 0.80)',
+												'rgba(153, 102, 255, 0.80)',
+
+											],
+											borderColor: [
+												'rgba(255, 159, 64, 1)',
+												'rgba(201, 76, 76, 0.3)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(0, 140, 162, 1)',
+												'rgba(158, 109, 8, 1)',
+												'rgba(201, 76, 76, 0.8)',
+												'rgba(0, 129, 212, 1)',
+												'rgba(201, 77, 201, 1)',
+												'rgba(255, 207, 207, 1)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(128, 98, 98, 1)',
+												'rgba(0, 0, 0, 1)',
+												'rgba(128, 128, 128, 1)',
+												'rgba(255, 99, 132, 1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(153, 102, 255, 1)',
+												'rgba(255, 159, 64, 1)',
+												'rgba(201, 76, 76, 0.3)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(0, 140, 162, 1)',
+												'rgba(158, 109, 8, 1)',
+												'rgba(201, 76, 76, 0.8)',
+												'rgba(0, 129, 212, 1)',
+												'rgba(201, 77, 201, 1)',
+												'rgba(255, 207, 207, 1)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(128, 98, 98, 1)',
+												'rgba(0, 0, 0, 1)',
+												'rgba(128, 128, 128, 1)',
+												'rgba(255, 99, 132, 1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(153, 102, 255, 1)',
+
+											],
+											fill: false,
+											borderWidth: 1
+										}]
+									},
 								});
 							</script>
 						</div>
@@ -628,126 +789,6 @@
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
 							<div>
-								<h3 class="m-0">Grafik Pembaca Perbulan</h3>
-							</div>
-						</div>
-						<div>
-							<?php
-							foreach ($grafik_buku_baca_bulan as $key => $grafik) {
-								$jumlah_baca_bulan[] = $grafik->jumlah_baca_bulan;
-								$bulan[] = $grafik->bulan;
-							}
-							?>
-							<canvas id="susu" style="height:260px;"></canvas>
-							<script>
-								var ctx = document.getElementById('susu');
-								var myChart = new Chart(ctx, {
-									type: 'bar',
-									data: {
-										labels: <?= json_encode($bulan) ?>,
-										datasets: [{
-											label: 'Grafik Baca Perbulan',
-											data: <?= json_encode($jumlah_baca_bulan) ?>,
-											backgroundColor: [
-												'rgba(255, 99, 132, 0.80)',
-												'rgba(54, 162, 235, 0.80)',
-												'rgba(255, 206, 86, 0.80)',
-												'rgba(75, 192, 192, 0.80)',
-												'rgba(153, 102, 255, 0.80)',
-												'rgba(255, 159, 64, 0.80)',
-												'rgba(201, 76, 76, 0.3)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(0, 140, 162, 1)',
-												'rgba(158, 109, 8, 1)',
-												'rgba(201, 76, 76, 0.8)',
-												'rgba(0, 129, 212, 1)',
-												'rgba(201, 77, 201, 1)',
-												'rgba(255, 207, 207, 1)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(128, 98, 98, 1)',
-												'rgba(0, 0, 0, 1)',
-												'rgba(128, 128, 128, 1)',
-												'rgba(255, 99, 132, 0.80)',
-												'rgba(54, 162, 235, 0.80)',
-												'rgba(255, 206, 86, 0.80)',
-												'rgba(75, 192, 192, 0.80)',
-												'rgba(153, 102, 255, 0.80)',
-												'rgba(255, 159, 64, 0.80)',
-												'rgba(201, 76, 76, 0.3)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(0, 140, 162, 1)',
-												'rgba(158, 109, 8, 1)',
-												'rgba(201, 76, 76, 0.8)',
-												'rgba(0, 129, 212, 1)',
-												'rgba(201, 77, 201, 1)',
-												'rgba(255, 207, 207, 1)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(128, 98, 98, 1)',
-												'rgba(0, 0, 0, 1)',
-												'rgba(128, 128, 128, 1)'
-											],
-											borderColor: [
-												'rgba(255, 99, 132, 1)',
-												'rgba(54, 162, 235, 1)',
-												'rgba(255, 206, 86, 1)',
-												'rgba(75, 192, 192, 1)',
-												'rgba(153, 102, 255, 1)',
-												'rgba(255, 159, 64, 1)',
-												'rgba(201, 76, 76, 0.3)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(0, 140, 162, 1)',
-												'rgba(158, 109, 8, 1)',
-												'rgba(201, 76, 76, 0.8)',
-												'rgba(0, 129, 212, 1)',
-												'rgba(201, 77, 201, 1)',
-												'rgba(255, 207, 207, 1)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(128, 98, 98, 1)',
-												'rgba(0, 0, 0, 1)',
-												'rgba(128, 128, 128, 1)',
-												'rgba(255, 99, 132, 1)',
-												'rgba(54, 162, 235, 1)',
-												'rgba(255, 206, 86, 1)',
-												'rgba(75, 192, 192, 1)',
-												'rgba(153, 102, 255, 1)',
-												'rgba(255, 159, 64, 1)',
-												'rgba(201, 76, 76, 0.3)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(0, 140, 162, 1)',
-												'rgba(158, 109, 8, 1)',
-												'rgba(201, 76, 76, 0.8)',
-												'rgba(0, 129, 212, 1)',
-												'rgba(201, 77, 201, 1)',
-												'rgba(255, 207, 207, 1)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(128, 98, 98, 1)',
-												'rgba(0, 0, 0, 1)',
-												'rgba(128, 128, 128, 1)'
-											],
-											fill: false,
-											borderWidth: 1
-										}]
-									},
-									options: {
-										scales: {
-											yAxes: [{
-												ticks: {
-													beginAtZero: true
-												}
-											}]
-										}
-									}
-								});
-							</script>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="ibox">
-					<div class="ibox-body">
-						<div class="flexbox mb-4">
-							<div>
 								<h3 class="m-0">Grafik Usia Peminjaman</h3>
 							</div>
 						</div>
@@ -769,17 +810,6 @@
 											label: 'Grafik Baca Perbulan',
 											data: <?= json_encode($jumlah_pinjaman) ?>,
 											backgroundColor: [
-												'rgba(255, 99, 132, 0.80)',
-												'rgba(54, 162, 235, 0.80)',
-												'rgba(255, 206, 86, 0.80)',
-												'rgba(75, 192, 192, 0.80)',
-												'rgba(153, 102, 255, 0.80)',
-												'rgba(255, 159, 64, 0.80)',
-												'rgba(201, 76, 76, 0.3)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(0, 140, 162, 1)',
-												'rgba(158, 109, 8, 1)',
-												'rgba(201, 76, 76, 0.8)',
 												'rgba(0, 129, 212, 1)',
 												'rgba(201, 77, 201, 1)',
 												'rgba(255, 207, 207, 1)',
@@ -798,26 +828,27 @@
 												'rgba(0, 140, 162, 1)',
 												'rgba(158, 109, 8, 1)',
 												'rgba(201, 76, 76, 0.8)',
+												'rgba(128, 128, 128, 1)',
+												'rgba(255, 99, 132, 0.80)',
+												'rgba(54, 162, 235, 0.80)',
+												'rgba(255, 206, 86, 0.80)',
+												'rgba(75, 192, 192, 0.80)',
+												'rgba(153, 102, 255, 0.80)',
+												'rgba(255, 159, 64, 0.80)',
+												'rgba(201, 76, 76, 0.3)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(0, 140, 162, 1)',
+												'rgba(158, 109, 8, 1)',
+												'rgba(201, 76, 76, 0.8)',
 												'rgba(0, 129, 212, 1)',
 												'rgba(201, 77, 201, 1)',
 												'rgba(255, 207, 207, 1)',
 												'rgba(201, 77, 77, 1)',
 												'rgba(128, 98, 98, 1)',
 												'rgba(0, 0, 0, 1)',
-												'rgba(128, 128, 128, 1)'
+
 											],
 											borderColor: [
-												'rgba(255, 99, 132, 1)',
-												'rgba(54, 162, 235, 1)',
-												'rgba(255, 206, 86, 1)',
-												'rgba(75, 192, 192, 1)',
-												'rgba(153, 102, 255, 1)',
-												'rgba(255, 159, 64, 1)',
-												'rgba(201, 76, 76, 0.3)',
-												'rgba(201, 77, 77, 1)',
-												'rgba(0, 140, 162, 1)',
-												'rgba(158, 109, 8, 1)',
-												'rgba(201, 76, 76, 0.8)',
 												'rgba(0, 129, 212, 1)',
 												'rgba(201, 77, 201, 1)',
 												'rgba(255, 207, 207, 1)',
@@ -836,13 +867,25 @@
 												'rgba(0, 140, 162, 1)',
 												'rgba(158, 109, 8, 1)',
 												'rgba(201, 76, 76, 0.8)',
+												'rgba(128, 128, 128, 1)',
+												'rgba(255, 99, 132, 1)',
+												'rgba(54, 162, 235, 1)',
+												'rgba(255, 206, 86, 1)',
+												'rgba(75, 192, 192, 1)',
+												'rgba(153, 102, 255, 1)',
+												'rgba(255, 159, 64, 1)',
+												'rgba(201, 76, 76, 0.3)',
+												'rgba(201, 77, 77, 1)',
+												'rgba(0, 140, 162, 1)',
+												'rgba(158, 109, 8, 1)',
+												'rgba(201, 76, 76, 0.8)',
 												'rgba(0, 129, 212, 1)',
 												'rgba(201, 77, 201, 1)',
 												'rgba(255, 207, 207, 1)',
 												'rgba(201, 77, 77, 1)',
 												'rgba(128, 98, 98, 1)',
 												'rgba(0, 0, 0, 1)',
-												'rgba(128, 128, 128, 1)'
+
 											],
 											fill: false,
 											borderWidth: 1

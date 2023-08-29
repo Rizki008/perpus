@@ -47,6 +47,12 @@ class Home extends CI_Controller
 			'log_pengembalian_hari' => $this->m_master->log_pengembalian_hari(),
 			'log_pengembalian_bulan' => $this->m_master->log_pengembalian_bulan(),
 			'log_pengembalian_tahun' => $this->m_master->log_pengembalian_tahun(),
+
+			//baru
+			'total_buku' => $this->m_master->total_buku(),
+			'total_pinjam' => $this->m_master->total_pinjam(),
+			'total_anggota' => $this->m_master->total_anggota(),
+			'total_baca' => $this->m_master->total_baca(),
 			'isi' => 'siswa/v_siswa'
 		);
 		$this->load->view('siswa/v_wrapper', $data, FALSE);

@@ -180,6 +180,15 @@ class M_master extends CI_Model
 	{
 		return $this->db->get('pengembalian_buku')->num_rows();
 	}
+	public function total_anggota()
+	{
+		$this->db->where('level_user', 5);
+		return $this->db->get('user')->num_rows();
+	}
+	public function total_baca()
+	{
+		return $this->db->get('baca')->num_rows();
+	}
 
 	public function grafik_buku()
 	{
