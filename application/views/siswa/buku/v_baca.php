@@ -14,13 +14,14 @@
 			<?php foreach ($baca as $key => $value) { ?>
 				<div class="col-lg-12 col-md-8">
 					<div class="ibox" id="mailbox-container">
+						<hr>
 						<div class="mailbox-header d-flex justify-content-between" style="border-bottom: 1px solid #e8e8e8;">
 							<div>
-								<h5 class="inbox-title">&nbsp;&nbsp;Judul : <?= $value->judul ?></h5>
+								<h5 class="inbox-title">&nbsp;&nbsp; <strong>Judul : <?= $value->judul ?></strong> </h5>
 								<div class="m-t-5 font-13">
-									<span class="font-strong">&nbsp;&nbsp;Pengarang : <?= $value->pengarang ?></span>
+									<span class="font-strong">&nbsp;&nbsp; &nbsp;Pengarang : <?= $value->pengarang ?></span>
 								</div>
-								<div class="p-r-10 font-13">&nbsp;&nbsp;Penerbit : <?= $value->penerbit ?></div>
+								<div class="p-r-10 font-13">&nbsp;&nbsp; &nbsp;Penerbit : <?= $value->penerbit ?></div>
 							</div>
 						</div>
 						<br>
