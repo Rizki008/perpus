@@ -23,6 +23,12 @@
 <script src="<?= base_url('backend/dist') ?>/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
 <script src="<?= base_url('backend/dist') ?>/assets/vendors/jvectormap/jquery-jvectormap-us-aea-en.js" type="text/javascript"></script>
 <script src="<?= base_url('backend/dist') ?>/assets/vendors/DataTables/datatables.min.js" type="text/javascript"></script>
+
+<script src="<?= base_url('backend/dist') ?>/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('backend/dist') ?>/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('backend/dist') ?>/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url('backend/dist') ?>/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
 <!-- CORE SCRIPTS-->
 <script src="<?= base_url('backend/dist') ?>/assets/js/app.min.js" type="text/javascript"></script>
 <!-- PAGE LEVEL SCRIPTS-->
@@ -41,6 +47,23 @@
 			]*/
 		});
 	})
+</script>
+<script>
+	$(function() {
+		$("#example1").DataTable({
+			"responsive": true,
+			"autoWidth": false,
+		});
+		$('#example2').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false,
+			"responsive": true,
+		});
+	});
 </script>
 </body>
 

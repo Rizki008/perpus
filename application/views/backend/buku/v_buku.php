@@ -17,7 +17,7 @@
 				<a href="<?= base_url('buku/add') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>Tambah Buku</a>
 			</div>
 			<div class="ibox-body">
-				<table class="table table-striped table-bordered table-hover" id="example-table" cellspacing="0" width="100%">
+				<table id="example1" class="table table-bordered" id="example1">
 					<thead>
 						<tr>
 							<th>No Buku</th>
@@ -65,6 +65,7 @@
 								<td><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" alt="" width="100px"></td>
 								<td><?= $value->file ?></td>
 								<td>
+									<button class="btn btn-info m-r-5 m-b-5" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top</button>
 									<a href="<?= base_url('buku/edit/' . $value->id_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 									<a href="<?= base_url('buku/delete/' . $value->id_buku) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
 									<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#add<?= $value->id_buku ?>">

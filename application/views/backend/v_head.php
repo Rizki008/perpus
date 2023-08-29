@@ -13,6 +13,11 @@
 	<!-- PLUGINS STYLES-->
 	<link href="<?= base_url('backend/dist') ?>/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
 	<link href="<?= base_url('backend/dist') ?>/assets/vendors/DataTables/datatables.min.css" rel="stylesheet" />
+
+	<!-- DataTables -->
+	<link rel="stylesheet" href="<?= base_url('backend/dist') ?>/datatables-bs4/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="<?= base_url('backend/dist') ?>/datatables-responsive/css/responsive.bootstrap4.min.css">
+
 	<!-- THEME STYLES-->
 	<link href="<?= base_url('backend/dist') ?>/assets/css/main.min.css" rel="stylesheet" />
 	<!-- PAGE LEVEL STYLES-->

@@ -10,6 +10,29 @@
 			<li class="breadcrumb-item"><?= $title ?></li>
 		</ol>
 	</div>
+	<?php
+	echo validation_errors('<div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fa fa-exclamation-triangle"></i> Coba Lagi</h5>', '</div>');
+
+	if ($this->session->flashdata('error')) {
+		echo '<div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fa fa-ban"></i> Gagal</h5>';
+		echo $this->session->flashdata('error');
+		echo '
+    </div>';
+	}
+
+	if ($this->session->flashdata('pesan')) {
+		echo '<div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fa fa-check"></i> Sukses</h5>';
+		echo $this->session->flashdata('pesan');
+		echo '</div>';
+	}
+
+	?>
 	<div class="page-content fade-in-up">
 		<div class="ibox">
 			<div class="ibox-head">

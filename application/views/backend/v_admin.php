@@ -62,6 +62,10 @@
 						</div>
 					</div>
 					<hr>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="ibox">
 					<div class="ibox-head">
 						<div class="ibox-title">Log Peminjaman</div>
 					</div>
@@ -84,6 +88,10 @@
 						</div>
 					</div>
 					<hr>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="ibox">
 					<div class="ibox-head">
 						<div class="ibox-title">Log Pengembalian</div>
 					</div>
@@ -105,9 +113,12 @@
 							</div>
 						</div>
 					</div>
+					<hr>
 				</div>
 			</div>
-			<div class="col-lg-8">
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
 				<div class="ibox">
 					<div class="ibox-body">
 						<div class="flexbox mb-4">
