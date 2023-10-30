@@ -13,6 +13,7 @@ class Admin extends CI_Controller
 		//Load Dependencies
 		$this->load->model('m_auth');
 		$this->load->model('m_master');
+		$this->load->model('m_kuisioner');
 	}
 
 	// // List all your items
@@ -40,6 +41,7 @@ class Admin extends CI_Controller
 			'log_pengembalian_hari' => $this->m_master->log_pengembalian_hari(),
 			'log_pengembalian_bulan' => $this->m_master->log_pengembalian_bulan(),
 			'log_pengembalian_tahun' => $this->m_master->log_pengembalian_tahun(),
+			'kuisioner' => $this->m_kuisioner->kuisioner(),
 			'isi' => 'backend/v_admin'
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);
