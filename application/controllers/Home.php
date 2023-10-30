@@ -13,6 +13,7 @@ class Home extends CI_Controller
 		//Load Dependencies
 		$this->load->model('m_buku');
 		$this->load->model('m_master');
+		$this->load->model('m_kuisioner');
 	}
 
 	// List all your items
@@ -53,6 +54,10 @@ class Home extends CI_Controller
 			'total_pinjam' => $this->m_master->total_pinjam(),
 			'total_anggota' => $this->m_master->total_anggota(),
 			'total_baca' => $this->m_master->total_baca(),
+
+			//kuisioner
+			'kuisioner' => $this->m_kuisioner->kuisioner(),
+			// 'rating' => $this->m_kuisioner->rating(),
 			'isi' => 'siswa/v_siswa'
 		);
 		$this->load->view('siswa/v_wrapper', $data, FALSE);

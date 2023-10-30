@@ -1,6 +1,6 @@
 <div class="content-wrapper">
 	<!-- START PAGE CONTENT-->
-	<div class="page-content fade-in-up">
+	< class="page-content fade-in-up">
 		<div class="row">
 			<div class="col-lg-3 col-md-6">
 				<div class="ibox bg-success color-white widget-stat">
@@ -193,6 +193,69 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-12">
+			<div class="ibox">
+				<div class="ibox-head">
+					<div class="ibox-title">Kuisioner</div>
+				</div>
+				<div class="ibox-body">
+					<!-- <h5 class="m-b-20 font-strong">Kuisioner</h5> -->
+					<ul class="media-list list-unstyled">
+						<?php foreach ($kuisioner as $key => $kuisi) { ?>
+							<li class="media">
+								<a class="media-img" href="javascript:;">
+									<img class="img-circle" src="<?= base_url('assets/sampul/' . $kuisi->sampul) ?>" style="width:40px;" />
+								</a>
+								<div class="media-body">
+									<h6 class="media-heading"><?= $kuisi->judul ?></h6>
+									<small>Hasil Kuisioner : <br> sistem aplikasi? : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
+									<small><br> cara peminjaman : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
+									<small><br> pembayaran denda : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
+									<small><br> Kualitas buku : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
+								</div>
+								<div class="media-right">
+									<?php
+									if ($kuisi->rating == 5) {
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+									} else if ($kuisi->rating == 4) {
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+									} else if ($kuisi->rating == 3) {
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+									} else if ($kuisi->rating == 2) {
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+									} else if ($kuisi->rating == 1) {
+										echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+										echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+									}
+									?>
+									<!-- <i class="fa fa-star font-16 color-orange"></i> -->
+								</div>
+							</li>
+						<?php } ?>
+					</ul><br>
+				</div>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="ibox">
@@ -1045,5 +1108,5 @@
 				margin-left: 10px;
 			}
 		</style>
-	</div>
-	<!-- END PAGE CONTENT-->
+</div>
+<!-- END PAGE CONTENT-->

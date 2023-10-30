@@ -13,6 +13,7 @@ class Master extends CI_Controller
 		//Load Dependencies
 		$this->load->model('m_master');
 		$this->load->model('m_buku');
+		$this->load->model('m_kuisioner');
 	}
 
 	// List all your items
@@ -228,6 +229,11 @@ class Master extends CI_Controller
 	{
 		$data = array(
 			'id_pengembalian' => $id_pengembalian,
+			"p1"              => $this->input->post("p1"),
+			"p2"              => $this->input->post("p2"),
+			"p3"              => $this->input->post("p3"),
+			"p4"              => $this->input->post("p4"),
+			"rating"              => $this->input->post("rating"),
 			'saran' => $this->input->post('saran'),
 			'status_saran' => '2'
 		);

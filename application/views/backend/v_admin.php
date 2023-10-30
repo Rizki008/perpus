@@ -117,6 +117,136 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-6">
+			<div class="ibox">
+				<div class="ibox-head">
+					<div class="ibox-title">Media List</div>
+				</div>
+				<div class="ibox-body">
+					<ul class="media-list">
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img src="./assets/img/users/u1.jpg" style="width:45px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">Media heading</h6>
+								<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
+							</div>
+						</li>
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img src="./assets/img/users/u2.jpg" style="width:45px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">Media heading</h6>
+								<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
+								<div class="media">
+									<a class="media-img" href="javascript:;">
+										<img src="./assets/img/users/u3.jpg" style="width:45px;" />
+									</a>
+									<div class="media-body">
+										<h6 class="media-heading">Media heading</h6>
+										<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
+										<div class="media">
+											<a class="media-img" href="javascript:;">
+												<img src="./assets/img/users/u4.jpg" style="width:45px;" />
+											</a>
+											<div class="media-body">
+												<h6 class="media-heading">Media heading</h6>
+												<p>Cras sit amet nibh libero, in gravida nulla.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="media">
+									<a class="media-img" href="javascript:;">
+										<img src="./assets/img/users/u1.jpg" style="width:45px;" />
+									</a>
+									<div class="media-body">
+										<h6 class="media-heading">Media heading</h6>
+										<p>Cras sit amet nibh libero, in gravida nulla.</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="media media-right">
+							<div class="media-body text-right">
+								<h6 class="media-heading">Media heading</h6>
+								<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
+							</div>
+							<a class="media-img" href="javascript:;">
+								<img src="./assets/img/users/u2.jpg" style="width:45px;" />
+							</a>
+						</li>
+					</ul>
+					<h5 class="m-b-20 font-strong">Media list</h5>
+					<ul class="media-list list-unstyled">
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img class="img-circle" src="./assets/img/users/u1.jpg" style="width:40px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">Jeanne</h6><small>Director</small>
+							</div>
+							<div class="media-right"><i class="fa fa-star font-16 color-orange"></i></div>
+						</li>
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img class="img-circle" src="./assets/img/users/u2.jpg" style="width:40px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">Becky</h6><small>Frontend Master</small>
+							</div>
+							<div class="media-right"><i class="fa fa-star font-16 color-red"></i></div>
+						</li>
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img class="img-circle" src="./assets/img/users/u3.jpg" style="width:40px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">Frank</h6><small>Graphic Designer</small>
+							</div>
+							<div class="media-right"><i class="fa fa-star font-16 color-blue"></i></div>
+						</li>
+					</ul><br>
+					<ul class="media-list list-unstyled">
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img class="img-circle" src="./assets/img/users/u1.jpg" style="width:40px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">
+									<a href="javascript:;">Jeanne</a>
+								</h6>
+								<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus.</p>
+							</div>
+						</li>
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img class="img-circle" src="./assets/img/users/u2.jpg" style="width:40px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">
+									<a href="javascript:;">Becky</a>
+								</h6>
+								<p>Nulla vel metus scelerisque ante sollicitudin commodo.</p>
+							</div>
+						</li>
+						<li class="media">
+							<a class="media-img" href="javascript:;">
+								<img class="img-circle" src="./assets/img/users/u3.jpg" style="width:40px;" />
+							</a>
+							<div class="media-body">
+								<h6 class="media-heading">
+									<a href="javascript:;">Frank</a>
+								</h6>
+								<p>Vestibulum in vulputate at, tempus viverra turpis.</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="ibox">

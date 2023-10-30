@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width initial-scale=1.0">
 	<title><?= $title ?></title>
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/rating/') ?>css/star-rating.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/rating/') ?>css/bootstrap.css">
 	<!-- GLOBAL MAINLY STYLES-->
 	<link href="<?= base_url('backend/dist') ?>/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="<?= base_url('backend/dist') ?>/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />

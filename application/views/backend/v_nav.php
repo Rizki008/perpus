@@ -81,6 +81,14 @@
 					<span class="nav-label">Data Anggota <span class="badge badge-danger"><?= $notif ?></span></span>
 				</a>
 			</li>
+			<li class="heading">KUISIONER</li>
+			<li>
+				<?php if ($this->session->userdata('level_user') === '2') { ?>
+					<a href="<?= base_url('kuisioner') ?>"><i class="sidebar-item-icon fa fa-comment"></i>
+						<span class="nav-label">Kuisioner</span>
+					</a>
+				<?php } ?>
+			</li>
 		</ul>
 	</div>
 </nav>

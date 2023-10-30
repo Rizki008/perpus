@@ -86,6 +86,44 @@
 									<h5>Tanggal Peminjaman : <strong><?= $value->tgl_peminjaman ?></strong></h5>
 									<h5>Tanggal Pengembalian : <strong><?= $value->tgl_pengembalian ?></strong></h5>
 									<hr>
+									<?php $kuisioner = $this->m_kuisioner->pertanyaan(); ?>
+									<div class="form-group">
+										<h6>Kusioner</h6>
+										<?php $no = 1;
+										foreach ($kuisioner as $key => $pertanyaan) { ?>
+											<p><?= $no++ ?>. &nbsp;<?= $pertanyaan->pertanyaan ?></p>
+											<div class="radio">
+												<label>
+													<input type="radio" name="p<?= $pertanyaan->id_pertanyaan ?>" id="p<?= $pertanyaan->id_pertanyaan ?>" value="<?= $pertanyaan->isi1 ?>">
+													<?php echo $pertanyaan->isi1 ?>
+												</label>&nbsp;
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="p<?= $pertanyaan->id_pertanyaan ?>" id="p<?= $pertanyaan->id_pertanyaan ?>" value="<?= $pertanyaan->isi2 ?>">
+													<?php echo $pertanyaan->isi2 ?>
+												</label>&nbsp;&nbsp;
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="p<?= $pertanyaan->id_pertanyaan ?>" id="p<?= $pertanyaan->id_pertanyaan ?>" value="<?= $pertanyaan->isi3 ?>">
+													<?php echo $pertanyaan->isi3 ?>
+												</label>&nbsp;&nbsp;
+											</div>
+											<div class="radio">
+												<label>
+													<input type="radio" name="p<?= $pertanyaan->id_pertanyaan ?>" id="p<?= $pertanyaan->id_pertanyaan ?>" value="<?= $pertanyaan->isi4 ?>">
+													<?php echo $pertanyaan->isi4 ?>
+												</label>
+											</div>
+										<?php } ?>
+									</div>
+									<hr>
+									<div class="form-group">
+										<label>Rating BUKU</label>
+										<input type="text" name="id" value="<?= $value->id_pengembalian ?>">
+										<input class="rating-input" type="text" name="rating" title="" />
+									</div>
 									<div class="form-group">
 										<label>Saran</label>
 										<textarea name="saran" class="form-control" cols="30" rows="10"></textarea>
