@@ -50,7 +50,7 @@
 										</div>
 										<div class="card-footer">
 											<?php if ($this->session->userdata('level_user') == '4' || $this->session->userdata('level_user') == '5' || $this->session->userdata('level_user') == '6') { ?>
-												<a href="<?= base_url('buku/download/' . $value->id_buku) ?>" class="text-info"><i class="fa fa-download"></i> Download PDF</a>
+												<!-- <a href="<?= base_url('buku/download/' . $value->id_buku) ?>" class="text-info"><i class="fa fa-download"></i> Download PDF</a> -->
 												<a href="<?= base_url('buku/baca_buku1/' . $value->id_buku) ?>" class="pull-right text-info"><i class="fa fa-book"></i>Baca</a>
 												<?php if ($value->stok >= '1') { ?>
 													<a href="<?= base_url('master/pinjam_baru/' . $value->no_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i>Pinjam Buku</a>

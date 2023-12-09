@@ -42,6 +42,7 @@ class Admin extends CI_Controller
 			'log_pengembalian_bulan' => $this->m_master->log_pengembalian_bulan(),
 			'log_pengembalian_tahun' => $this->m_master->log_pengembalian_tahun(),
 			'kuisioner' => $this->m_kuisioner->kuisioner(),
+			'pertanyaan_hasil' => $this->m_kuisioner->pertanyaan_hasil(),
 			'isi' => 'backend/v_admin'
 		);
 		$this->load->view('backend/v_wrapper', $data, FALSE);

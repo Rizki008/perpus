@@ -38,6 +38,13 @@ class M_kuisioner extends CI_Model
 		$this->db->join('buku', 'pengembalian_buku.no_buku = buku.no_buku', 'left');
 		return $this->db->get()->result();
 	}
+	public function pertanyaan_hasil()
+	{
+		$this->db->select('*');
+		$this->db->from('pertanyaan');
+		$this->db->order_by('id_pertanyaan', 'desc');
+		return $this->db->get()->result();
+	}
 	// public function rating()
 	// {
 	// 	$this->db->select_sum('rating');

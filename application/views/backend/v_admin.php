@@ -132,10 +132,11 @@
 								</a>
 								<div class="media-body">
 									<h6 class="media-heading"><?= $kuisi->judul ?></h6>
-									<small>Hasil Kuisioner : <br> sistem aplikasi? : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
-									<small><br> cara peminjaman : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
-									<small><br> pembayaran denda : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
-									<small><br> Kualitas buku : <?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></small>
+									<small>Hasil Kuisioner : </small>
+									<?php foreach ($pertanyaan_hasil as $key => $pertanyaann) { ?>
+										<br>
+										<small><?= $pertanyaann->pertanyaan ?> : <h6><?= $kuisi->p1 ?>,<?= $kuisi->p2 ?>,<?= $kuisi->p3 ?>,<?= $kuisi->p4 ?></h6><br></small>
+									<?php } ?>
 								</div>
 								<div class="media-right">
 									<?php
