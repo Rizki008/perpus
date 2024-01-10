@@ -46,6 +46,24 @@
 									<button data-toggle="modal" data-target="#baca<?= $value->id_buku ?>" type="button" class="btn btn-primary btn-sm"><i class="fa fa-book"></i>
 										Baca Buku
 									</button>
+									<?php if ($this->session->userdata('level_user') == '4' || $this->session->userdata('level_user') == '5' || $this->session->userdata('level_user') == '6') { ?>
+										<?php
+										if ($value->stok >= '1') { ?>
+											<a href="<?= base_url('master/pinjam_baru/' . $value->no_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i>Pinjam Buku</a>
+										<?php } else { ?>
+											<a href="<?= base_url('master/booking/' . $value->no_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i>Booking Buku</a>
+										<?php } ?>
+									<?php } else { ?>
+										<?php if ($value->stok >= '1') { ?>
+											<button data-toggle="modal" data-target="#addpinjam" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
+												Pinjam Buku
+											</button>
+										<?php } else { ?>
+											<button data-toggle="modal" data-target="#addbooking" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
+												Booking Buku
+											</button>
+										<?php } ?>
+									<?php } ?>
 								</div>
 							</div>
 						<?php } ?>
@@ -88,4 +106,75 @@
 				<!-- /.modal-dialog -->
 			</div>
 			<!-- /.modal -->
+		<?php } ?>
+
+		<?php foreach ($detail as $key => $pinjam) { ?>
+			<div class="modal fade" id="addpinjam">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Pinjam Buku</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<?php
+							echo form_open('master/pinjam_langsung_baru/' . $pinjam->no_buku);
+							?>
+							<?php $id_peminjaman = date('Ymd') . strtoupper(random_string('alnum', 8)); ?>
+							<input name="id_peminjaman" value="<?= $id_peminjaman ?>" type="hidden">
+							<!-- <div class="row"> -->
+							<div class="form-group">
+								<label>Nama Peminjam</label>
+								<input type="text" name="nama_peminjam" class="form-control" placeholder="Nama Peminjam" required>
+							</div>
+						</div>
+						<div class="modal-footer justify-content-between">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Pinjam</button>
+						</div>
+						<?php
+						echo form_close();
+						?>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+		<?php } ?>
+		<?php foreach ($detail as $key => $booking) { ?>
+			<div class="modal fade" id="addbooking">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Booking Buku</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<?php
+							echo form_open('master/booking_langsung_baru/' . $booking->no_buku);
+							?>
+							<?php $id_booking = date('Ymd') . strtoupper(random_string('alnum', 8)); ?>
+							<input name="id_booking" value="<?= $id_booking ?>" type="hidden">
+							<!-- <div class="row"> -->
+							<div class="form-group">
+								<label>Nama Booking</label>
+								<input type="text" name="nama_booking" class="form-control" placeholder="Nama booking" required>
+							</div>
+						</div>
+						<div class="modal-footer justify-content-between">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Booking</button>
+						</div>
+						<?php
+						echo form_close();
+						?>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
 		<?php } ?>

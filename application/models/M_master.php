@@ -130,6 +130,10 @@ class M_master extends CI_Model
 	{
 		$this->db->insert('peminjaman_buku', $data);
 	}
+	public function booking($data)
+	{
+		$this->db->insert('booking_buku', $data);
+	}
 	public function pengembalian($data)
 	{
 		$this->db->insert('pengembalian_buku', $data);

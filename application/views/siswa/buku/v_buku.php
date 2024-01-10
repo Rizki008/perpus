@@ -20,12 +20,11 @@
 			</div>
 			<div class="ibox-body">
 				<div class="row">
-					<div class="col-md-9">
-						<div class="card-deck">
-							<?php foreach ($buku as $key => $value) { ?>
-								<?php if ($value->file == NULL) { ?>
-
-								<?php } else { ?>
+					<?php foreach ($buku as $key => $value) { ?>
+						<?php if ($value->file == NULL) { ?>
+						<?php } else { ?>
+							<div class="col-md-3">
+								<div class="card-deck">
 									<div class="card">
 										<a href="<?= base_url('buku/detail/' . $value->id_buku) ?>"><img src="<?= base_url('assets/sampul/' . $value->sampul) ?>" width="450px" height="230px" /></a>
 										<div class="card-body">
@@ -48,29 +47,37 @@
 												<?php } ?>
 											</div>
 										</div>
-										<div class="card-footer">
+										<div class="card-footer text-center">
 											<?php if ($this->session->userdata('level_user') == '4' || $this->session->userdata('level_user') == '5' || $this->session->userdata('level_user') == '6') { ?>
 												<!-- <a href="<?= base_url('buku/download/' . $value->id_buku) ?>" class="text-info"><i class="fa fa-download"></i> Download PDF</a> -->
-												<a href="<?= base_url('buku/baca_buku1/' . $value->id_buku) ?>" class="pull-right text-info"><i class="fa fa-book"></i>Baca</a>
+												<i class="fa fa-clock-o"> <?= $value->peminjam ?> Antrian</i>
+												<!-- <a href="<?= base_url('buku/baca_buku1/' . $value->id_buku) ?>" class="pull-right text-info"><i class="fa fa-book"></i>Baca</a> -->
 												<?php if ($value->stok >= '1') { ?>
-													<a href="<?= base_url('master/pinjam_baru/' . $value->no_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i>Pinjam Buku</a>
+													<!-- <a href="<?= base_url('master/pinjam_baru/' . $value->no_buku) ?>" class="btn btn-warning btn-sm"><i class="fa fa-plus"></i>Pinjam Buku</a> -->
 												<?php } ?>
 											<?php } else { ?>
-												<button data-toggle="modal" data-target="#baca<?= $value->id_buku ?>" type="button" class="pull-right btn btn-primary btn-sm"><i class="fa fa-book"></i>
+												<?php
+												// if ($value->stok <= 1) {
+												?>
+												<i class="fa fa-clock-o"> <?= $value->peminjam ?> Antrian</i>
+												<?php
+												// }
+												?>
+												<!-- <button data-toggle="modal" data-target="#baca<?= $value->id_buku ?>" type="button" class="pull-right btn btn-primary btn-sm"><i class="fa fa-book"></i>
 													Baca
-												</button>
+												</button> -->
 												<?php if ($value->stok >= '1') { ?>
-													<button data-toggle="modal" data-target="#addpinjam" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
+													<!-- <button data-toggle="modal" data-target="#addpinjam" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>
 														Pinjam Buku
-													</button>
+													</button> -->
 												<?php } ?>
 											<?php } ?>
 										</div>
 									</div>
-								<?php } ?>
-							<?php } ?>
-						</div>
-					</div>
+								</div>
+							</div>
+						<?php } ?>
+					<?php } ?>
 				</div><br>
 			</div>
 		</div>

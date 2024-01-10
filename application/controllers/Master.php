@@ -132,6 +132,26 @@ class Master extends CI_Controller
 		$this->session->set_flashdata('pesan', 'Peminjaman Berhasil!!!');
 		redirect('buku/buku');
 	}
+	public function booking($no_buku)
+	{
+		$data = array(
+			'no_buku' => $no_buku,
+			'id_booking' => strtoupper('id_booking'),
+			'id_user' => $this->session->userdata('id_user'),
+			'nama_booking' => $this->session->userdata('nama'),
+			'tgl_booking' => date('Y-m-d H:i:s'),
+			'status' => '1',
+			'jml_booking' => '1'
+		);
+		$this->m_master->booking($data);
+
+		// $status = array(
+		// 	'status' => '1',
+		// );
+		// $this->m_master->update_status_buku($data['no_buku'], $status);
+		$this->session->set_flashdata('pesan', 'Booking Berhasil!!!');
+		redirect('buku/buku');
+	}
 	// Add a new item
 
 	public function pinjam_langsung_baru($no_buku)
@@ -151,6 +171,25 @@ class Master extends CI_Controller
 			'status' => '1',
 		);
 		$this->m_master->update_status_buku($data['no_buku'], $status);
+		$this->session->set_flashdata('pesan', 'Peminjaman Berhasil!!!');
+		redirect('buku/buku');
+	}
+	public function booking_langsung_baru($no_buku)
+	{
+
+		$data = array(
+			'no_buku' => $no_buku,
+			'nama_booking' => $this->input->post('nama_booking'),
+			// 'tgl_peminjaman' => $this->input->post('tgl_peminjaman'),
+			'tgl_booking' => date('Y-m-d H:i:s'),
+			'status' => '1',
+			'jml_booking' => '1'
+		);
+		$this->m_master->booking($data);
+		// $status = array(
+		// 	'status' => '1',
+		// );
+		// $this->m_master->update_status_buku($data['no_buku'], $status);
 		$this->session->set_flashdata('pesan', 'Peminjaman Berhasil!!!');
 		redirect('buku/buku');
 	}
